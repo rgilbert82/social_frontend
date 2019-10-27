@@ -4,3 +4,10 @@ export const changeCurrentUser = (user) => {
     payload: user
   }
 };
+
+export const setMessage = (message) => {
+  return {
+    type: 'SET_MESSAGE',
+    payload: message
+  }
+};
