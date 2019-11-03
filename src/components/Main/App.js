@@ -25,12 +25,10 @@ class App extends React.Component {
     if (token) {
       return getCurrentUserAPI(token)
         .then((data) => {
-          console.log(data);
           payload = { loggedIn: true, currentUser: data };
           this.props.changeCurrentUser(payload);
           setToken(token);
-        }).catch((err) => {
-          console.log(err);
+        }).catch(() => {
           this.props.changeCurrentUser(payload);
           deleteToken();
         });

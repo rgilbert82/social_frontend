@@ -4,19 +4,11 @@ import { connect } from 'react-redux';
 
 class Homepage extends React.Component {
   render() {
-    let template;
-
     if (this.props.loggedIn) {
-      template = <HomepageLoggedIn />
+      return <HomepageLoggedIn />
     } else {
-      template = <HomepageLoggedOut />
+      return <HomepageLoggedOut />
     }
-
-    return (
-      <div>
-        { template }
-      </div>
-    );
   }
 }
 

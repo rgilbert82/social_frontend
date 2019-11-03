@@ -15,7 +15,6 @@ class HomepageLoggedOut extends React.Component {
   userSignup(user) {
     return createUserAPI(user)
       .then((data) => {
-        console.log(data);
         this.props.changeCurrentUser({ loggedIn: true, currentUser: data });
         this.props.setMessage({ content: 'Thanks for signing up!', type: 'success' });
         setToken(data.token);
@@ -36,13 +35,6 @@ class HomepageLoggedOut extends React.Component {
 
 // REDUX ======================================================================
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     changeCurrentUser: (payload) => dispatch(changeCurrentUser(payload)),
@@ -50,6 +42,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const component = connect(mapStateToProps, mapDispatchToProps)(HomepageLoggedOut);
+const component = connect(null, mapDispatchToProps)(HomepageLoggedOut);
 
 export default component;

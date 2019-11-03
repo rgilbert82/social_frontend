@@ -6,12 +6,22 @@ import './Message.css';
 class Message extends React.Component {
   constructor(props) {
     super(props);
-
     this.closeMessageWindow = this.closeMessageWindow.bind(this);
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+
+    setTimeout(() => {
+      this.closeMessageWindow();
+    }, 3000);
+  }
+
   closeMessageWindow() {
-    this.props.setMessage({ content: false, type: 'error' });
+    if (this._isMounted) {
+      this._isMounted = false;
+      this.props.setMessage({ content: false, type: 'error' });
+    }
   }
 
   render() {

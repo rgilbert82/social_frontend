@@ -10,9 +10,13 @@ import './Header.css';
 class Header extends React.Component {
   constructor(props) {
     super(props);
-
     this.appLogin  = this.appLogin.bind(this);
     this.appLogout = this.appLogout.bind(this);
+  }
+
+  componentDidUpdate() {
+    console.log('PROPS');
+    console.log(this.props);
   }
 
   appLogin(user) {
@@ -20,7 +24,7 @@ class Header extends React.Component {
       .then((data) => {
         console.log(data);
         this.props.changeCurrentUser({ loggedIn: true, currentUser: data });
-        setToken(data.token);
+        setToken(data.user.token);
       }).catch((err) => {
         this.props.setMessage({ content: err.errors, type: 'error' });
       });
@@ -45,13 +49,35 @@ class Header extends React.Component {
 
   render() {
     let template;
+    let userPath;
+    let pending;
 
     if (this.props.loggedIn) {
+      userPath = `/users/${ this.props.currentUser.slug }`;
+
+      if (this.props.pending_inverse_friends.length) {
+        pending = (
+          <li>
+            Friend Requests: <Link to='/account/friend_requests'>{ this.props.pending_inverse_friends.length }</Link>
+          </li>
+        );
+      }
+
       template =
         <div>
           <Link to='/'><h1>{ this.props.title }!</h1></Link>
-          <h2>{ this.props.currentUser.email }</h2>
-          <button onClick={ this.appLogout }>Log Out</button>
+          <ul>
+            <li>
+              <Link to={ userPath }>Profile</Link>
+            </li>
+            <li>
+              <Link to='/account'>Account</Link>
+            </li>
+            { pending }
+            <li>
+              <button onClick={ this.appLogout }>Log Out</button>
+            </li>
+          </ul>
         </div>
     } else {
       template =
@@ -75,6 +101,9 @@ const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
     currentUser: state.currentUser,
+    friends: state.friends,
+    pending_friends: state.pending_friends,
+    pending_inverse_friends: state.pending_inverse_friends,
     title: state.title
   };
 };
