@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setMessage } from '../../services/redux/actions';
-import './Message.css';
 
 class Message extends React.Component {
   constructor(props) {

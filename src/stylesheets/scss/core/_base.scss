@@ -1,0 +1,282 @@
+* {
+  box-sizing: border-box;
+  color: $green;
+  font-weight: 100;
+  font-family: 'VT323', monospace;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #000;
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+//------------  GENERAL ---------------------------------------------------- //
+
+.b-page-width {
+  max-width: $page-width;
+  display: block;
+  margin: 0 auto;
+}
+
+//------------  MESSAGE WINDOW --------------------------------------------- //
+
+
+.b-message {
+  height: 100px;
+  width: 200px;
+  border: 1px solid #000;
+  margin: 0 auto;
+}
+
+//------------  OVERLAYS --------------------------------------------------- //
+
+.b-dark-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $black;
+  opacity: 0.3;
+  z-index: 1000;
+}
+
+//------------  GRID ------------------------------------------------------- //
+
+.b-grid--10,
+.b-grid--20,
+.b-grid--25,
+.b-grid--30,
+.b-grid--33,
+.b-grid--40,
+.b-grid--50,
+.b-grid--60,
+.b-grid--70,
+.b-grid--80,
+.b-grid--90,
+.b-grid--10-m,
+.b-grid--20-m,
+.b-grid--25-m,
+.b-grid--30-m,
+.b-grid--33-m,
+.b-grid--40-m,
+.b-grid--50-m,
+.b-grid--60-m,
+.b-grid--70-m,
+.b-grid--80-m,
+.b-grid--90-m,
+.b-grid--10-sm,
+.b-grid--20-sm,
+.b-grid--25-sm,
+.b-grid--30-sm,
+.b-grid--33-sm,
+.b-grid--40-sm,
+.b-grid--50-sm,
+.b-grid--60-sm,
+.b-grid--70-sm,
+.b-grid--80-sm,
+.b-grid--90-sm {
+  display: inline-block;
+}
+
+.b-grid--10 {
+  width: 10% !important;
+}
+
+.b-grid--20 {
+  width: 20% !important;
+}
+
+.b-grid--25 {
+  width: 25% !important;
+}
+
+.b-grid--30 {
+  width: 30% !important;
+}
+
+.b-grid--33 {
+  width: 33% !important;
+}
+
+.b-grid--40 {
+  width: 40% !important;
+}
+
+.b-grid--50 {
+  width: 50% !important;
+}
+
+.b-grid--60 {
+  width: 60% !important;
+}
+
+.b-grid--70 {
+  width: 70% !important;
+}
+
+.b-grid--80 {
+  width: 80% !important;
+}
+
+.b-grid--90 {
+  width: 90% !important;
+}
+
+.b-grid--100 {
+  width: 100% !important;
+}
+
+
+// Grid for medium screen sizes
+
+.b-grid--10-m {
+  @include media-query($medium) {
+    width: 10% !important;
+  }
+}
+
+.b-grid--20-m {
+  @include media-query($medium) {
+    width: 20% !important;
+  }
+}
+
+.b-grid--25-m {
+  @include media-query($medium) {
+    width: 25% !important;
+  }
+}
+
+.b-grid--30-m {
+  @include media-query($medium) {
+    width: 30% !important;
+  }
+}
+
+.b-grid--33-m {
+  @include media-query($medium) {
+    width: 33% !important;
+  }
+}
+
+.b-grid--40-m {
+  @include media-query($medium) {
+    width: 40% !important;
+  }
+}
+
+.b-grid--50-m {
+  @include media-query($medium) {
+    width: 50% !important;
+  }
+}
+
+.b-grid--60-m {
+  @include media-query($medium) {
+    width: 60% !important;
+  }
+}
+
+.b-grid--70-m {
+  @include media-query($medium) {
+    width: 70% !important;
+  }
+}
+
+.b-grid--80-m {
+  @include media-query($medium) {
+    width: 80% !important;
+  }
+}
+
+.b-grid--90-m {
+  @include media-query($medium) {
+    width: 90% !important;
+  }
+}
+
+.b-grid--100-m {
+  @include media-query($medium) {
+    width: 100% !important;
+  }
+}
+
+// Grid for small screen sizes
+
+.b-grid--10-sm {
+  @include media-query($small) {
+    width: 10% !important;
+  }
+}
+
+.b-grid--20-sm {
+  @include media-query($small) {
+    width: 20% !important;
+  }
+}
+
+.b-grid--25-sm {
+  @include media-query($small) {
+    width: 25% !important;
+  }
+}
+
+.b-grid--30-sm {
+  @include media-query($small) {
+    width: 30% !important;
+  }
+}
+
+.b-grid--33-sm {
+  @include media-query($small) {
+    width: 33% !important;
+  }
+}
+
+.b-grid--40-sm {
+  @include media-query($small) {
+    width: 40% !important;
+  }
+}
+
+.b-grid--50-sm {
+  @include media-query($small) {
+    width: 50% !important;
+  }
+}
+
+.b-grid--60-sm {
+  @include media-query($small) {
+    width: 60% !important;
+  }
+}
+
+.b-grid--70-sm {
+  @include media-query($small) {
+    width: 70% !important;
+  }
+}
+
+.b-grid--80-sm {
+  @include media-query($small) {
+    width: 80% !important;
+  }
+}
+
+.b-grid--90-sm {
+  @include media-query($small) {
+    width: 90% !important;
+  }
+}
+
+.b-grid--100-sm {
+  @include media-query($small) {
+    width: 100% !important;
+  }
+}

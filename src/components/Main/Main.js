@@ -8,7 +8,7 @@ import { NothingHere } from '../Misc';
 export default class Main extends React.Component {
   render() {
     return (
-      <div>
+      <div className='b-page-width'>
         <Switch>
           <Route
             exact path='/'

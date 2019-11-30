@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './stylesheets/css-reset.css';
-import './stylesheets/index.css';
+import './stylesheets/css/style.css';
 import { App } from './components/Main';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';

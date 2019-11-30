@@ -1,0 +1,30 @@
+// ******** COLORS *********** //
+
+$black: #000000;
+$white: #ffffff;
+$green: #49DC0F;
+
+// ****************************************** //
+
+// Typography
+
+@import url('https://fonts.googleapis.com/css?family=VT323');
+
+
+// page max-width
+$page-width: 1300px;
+
+// Breakpoints used with the media mixin
+$extra-small: 'extra-small';
+$small: 'small';
+$medium: 'medium';
+$large: 'large';
+$widescreen: 'widescreen';
+
+$breakpoints: (
+  $extra-small '(max-width: 400px)',
+  $small '(max-width: 600px)',
+  $medium '(max-width: 800px)',
+  $large '(max-width: 1000px)',
+  $widescreen '(min-width: 1300px)'
+);

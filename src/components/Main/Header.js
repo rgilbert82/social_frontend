@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { changeCurrentUser, setMessage } from '../../services/redux/actions';
 import { loginAPI, logoutAPI } from '../../services/api/sessions';
 import { getToken, setToken, deleteToken } from '../../services/sessions';
-import './Header.css';
 
 class Header extends React.Component {
   constructor(props) {
@@ -64,7 +63,7 @@ class Header extends React.Component {
       }
 
       template =
-        <div>
+        <div className='b-page-width'>
           <Link to='/'><h1>{ this.props.title }!</h1></Link>
           <ul>
             <li>
@@ -81,7 +80,7 @@ class Header extends React.Component {
         </div>
     } else {
       template =
-        <div>
+        <div className='b-page-width'>
           <Link to='/'><h1>{ this.props.title }</h1></Link>
           <LoginForm submitForm={ this.appLogin } />
         </div>

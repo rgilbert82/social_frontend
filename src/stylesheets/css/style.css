@@ -1,0 +1,302 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css?family=VT323");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/**
+ * Sets a media query for the specified breakpoint
+ *
+ * Accepts:
+ * - $media-query: {String} Breakpoint variable (list found in variables.scss)
+ *
+ * Usage:
+ * .selector {
+ *   @include media-query($medium-up) {
+ *     color: red;
+ *   }
+ * }
+ */
+/**
+ * Outputs list of transition properties
+ *
+ * Accepts:
+ * - $transitions: {String} List of transition properties to set
+ *
+ * Usage:
+ * .selector {
+ *   @include transition(width, height 0.5s ease-in);
+ * }
+ */
+/**
+ * Forces an element to self-clear its children
+ *
+ * Usage:
+ * .selector {
+ *   @include clearfix;
+ * }
+ */
+/**
+ * Hide element but make it accessible to screen readers
+ *
+ * Usage:
+ * .selector {
+ *   @include visually-hidden;
+ * }
+ */
+/**
+ * Reverse the properties applied by @mixin visually-hidden
+ *
+ * Accepts:
+ * - $position: {String} Positioning method for element
+ *
+ * Usage:
+ * .selector {
+ *   @include visually-shown(relative);
+ * }
+ */
+* {
+  box-sizing: border-box;
+  color: #49DC0F;
+  font-weight: 100;
+  font-family: 'VT323', monospace; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  background-color: #000;
+  padding: 2rem;
+  font-size: 2rem; }
+
+.b-page-width {
+  max-width: 1300px;
+  display: block;
+  margin: 0 auto; }
+
+.b-message {
+  height: 100px;
+  width: 200px;
+  border: 1px solid #000;
+  margin: 0 auto; }
+
+.b-dark-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000;
+  opacity: 0.3;
+  z-index: 1000; }
+
+.b-grid--10,
+.b-grid--20,
+.b-grid--25,
+.b-grid--30,
+.b-grid--33,
+.b-grid--40,
+.b-grid--50,
+.b-grid--60,
+.b-grid--70,
+.b-grid--80,
+.b-grid--90,
+.b-grid--10-m,
+.b-grid--20-m,
+.b-grid--25-m,
+.b-grid--30-m,
+.b-grid--33-m,
+.b-grid--40-m,
+.b-grid--50-m,
+.b-grid--60-m,
+.b-grid--70-m,
+.b-grid--80-m,
+.b-grid--90-m,
+.b-grid--10-sm,
+.b-grid--20-sm,
+.b-grid--25-sm,
+.b-grid--30-sm,
+.b-grid--33-sm,
+.b-grid--40-sm,
+.b-grid--50-sm,
+.b-grid--60-sm,
+.b-grid--70-sm,
+.b-grid--80-sm,
+.b-grid--90-sm {
+  display: inline-block; }
+
+.b-grid--10 {
+  width: 10% !important; }
+
+.b-grid--20 {
+  width: 20% !important; }
+
+.b-grid--25 {
+  width: 25% !important; }
+
+.b-grid--30 {
+  width: 30% !important; }
+
+.b-grid--33 {
+  width: 33% !important; }
+
+.b-grid--40 {
+  width: 40% !important; }
+
+.b-grid--50 {
+  width: 50% !important; }
+
+.b-grid--60 {
+  width: 60% !important; }
+
+.b-grid--70 {
+  width: 70% !important; }
+
+.b-grid--80 {
+  width: 80% !important; }
+
+.b-grid--90 {
+  width: 90% !important; }
+
+.b-grid--100 {
+  width: 100% !important; }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--10-m {
+    width: 10% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--20-m {
+    width: 20% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--25-m {
+    width: 25% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--30-m {
+    width: 30% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--33-m {
+    width: 33% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--40-m {
+    width: 40% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--50-m {
+    width: 50% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--60-m {
+    width: 60% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--70-m {
+    width: 70% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--80-m {
+    width: 80% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--90-m {
+    width: 90% !important; } }
+
+@media only screen and (max-width: 800px) {
+  .b-grid--100-m {
+    width: 100% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--10-sm {
+    width: 10% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--20-sm {
+    width: 20% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--25-sm {
+    width: 25% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--30-sm {
+    width: 30% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--33-sm {
+    width: 33% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--40-sm {
+    width: 40% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--50-sm {
+    width: 50% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--60-sm {
+    width: 60% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--70-sm {
+    width: 70% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--80-sm {
+    width: 80% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--90-sm {
+    width: 90% !important; } }
+
+@media only screen and (max-width: 600px) {
+  .b-grid--100-sm {
+    width: 100% !important; } }
+
+/*# sourceMappingURL=style.css.map */

@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { changeCurrentUser } from '../../services/redux/actions';
 import { getCurrentUserAPI } from '../../services/api/sessions';
 import { getToken, setToken, deleteToken } from '../../services/sessions';
-import './App.css';
 
 class App extends React.Component {
   constructor(props) {
