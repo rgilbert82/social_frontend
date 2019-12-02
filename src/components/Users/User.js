@@ -33,7 +33,9 @@ export default class User extends React.Component {
     return getUserAPI(this.props.match.params.slug)
       .then((data) => {
         if (this._isMounted) {
-          this.setState({ user: data });
+          this.setState({ user: data.user });
+          console.log('USER');
+          console.log(data);
         }
       }).catch(() => {
         if (this._isMounted) {

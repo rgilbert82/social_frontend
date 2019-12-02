@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getToken } from '../../services/sessions';
-import { setMessage, updateFriends } from '../../services/redux/actions';
+import { changeCurrentUser, setMessage } from '../../services/redux/actions';
 import { confirmFriendshipAPI, deleteFriendshipAPI } from '../../services/api/friendships';
 
 class AccountFriendRequest extends React.Component {
@@ -24,7 +24,7 @@ class AccountFriendRequest extends React.Component {
 
     return confirmFriendshipAPI(data, token)
       .then((data) => {
-        this.props.updateFriends(data);
+        this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
       }).catch(() => {
         this.props.setMessage('There was an error accepting the friendship request.');
       });
@@ -41,7 +41,7 @@ class AccountFriendRequest extends React.Component {
 
     return deleteFriendshipAPI(data, token)
       .then((data) => {
-        this.props.updateFriends(data);
+        this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
       }).catch(() => {
         this.props.setMessage('There was an error declining the friendship request.');
       });
@@ -53,7 +53,7 @@ class AccountFriendRequest extends React.Component {
     return (
       <div>
         <h3>
-          <Link to={ userPath }>{ this.props.friend.first_name } { this.props.friend.last_name }</Link>
+          <Link to={ userPath }>{ this.props.friend.name }</Link>
           <button onClick={ this.acceptFriendRequest }>Accept Friend Request</button>
           <button onClick={ this.declineFriendRequest }>Decline Friend Request</button>
         </h3>
@@ -72,7 +72,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateFriends: (payload) => dispatch(updateFriends(payload)),
+    changeCurrentUser: (payload) => dispatch(changeCurrentUser(payload)),
     setMessage: (payload) => dispatch(setMessage(payload))
   }
 };

@@ -8,7 +8,7 @@ export default class UsersMain extends React.Component {
 
       return (
         <li key={ user.id }>
-          <Link to={ path }>{ user.first_name } { user.last_name }</Link>
+          <Link to={ path }>{ user.name }</Link>
         </li>
       );
     });

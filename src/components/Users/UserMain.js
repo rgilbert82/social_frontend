@@ -50,15 +50,15 @@ class UserMain extends React.Component {
   }
 
   checkIfFriend() {
-    const isFriend = !!this.props.friends.filter((friend) => {
+    const isFriend = !!this.props.currentUser.friends.filter((friend) => {
       return friend.id === this.props.user.id;
     }).length;
 
-    const isPendingFriend = !!this.props.pending_friends.filter((friend) => {
+    const isPendingFriend = !!this.props.currentUser.pending_friends.filter((friend) => {
       return friend.id === this.props.user.id;
     }).length;
 
-    const isPendingInverseFriend = !!this.props.pending_inverse_friends.filter((friend) => {
+    const isPendingInverseFriend = !!this.props.currentUser.pending_inverse_friends.filter((friend) => {
       return friend.id === this.props.user.id;
     }).length;
 
@@ -92,12 +92,12 @@ class UserMain extends React.Component {
     return (
       <div>
         <div>
-          <h1>{ this.props.user.first_name } { this.props.user.last_name }</h1>
+          <h1>{ this.props.user.name }</h1>
           <h2>{ this.props.user.email }</h2>
           { friendButton }
         </div>
 
-        <Posts userStatus={ this.state } />
+        <Posts userStatus={ this.state } user={ this.props.user } />
       </div>
     );
   }
@@ -109,9 +109,6 @@ const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
     currentUser: state.currentUser,
-    friends: state.friends,
-    pending_friends: state.pending_friends,
-    pending_inverse_friends: state.pending_inverse_friends,
     message: state.message
   };
 };

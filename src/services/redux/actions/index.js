@@ -11,10 +11,3 @@ export const setMessage = (message) => {
     payload: message
   }
 };
-
-export const updateFriends = (friends) => {
-  return {
-    type: 'UPDATE_FRIENDS',
-    payload: friends
-  }
-};

@@ -6,8 +6,8 @@ class AccountFriendRequests extends React.Component {
   render() {
     let friendRequests;
 
-    if (this.props.pending_inverse_friends.length) {
-      friendRequests = this.props.pending_inverse_friends.map((friend) => {
+    if (this.props.currentUser.pending_inverse_friends.length) {
+      friendRequests = this.props.currentUser.pending_inverse_friends.map((friend) => {
         return (
           <li key={ friend.id }>
             <AccountFriendRequest friend={ friend } />
@@ -20,7 +20,7 @@ class AccountFriendRequests extends React.Component {
 
     return (
       <div>
-        <h2>Friend Requests: { this.props.pending_inverse_friends.length }</h2>
+        <h2>Friend Requests: { this.props.currentUser.pending_inverse_friends.length }</h2>
 
         <ul>
           { friendRequests }
@@ -36,9 +36,6 @@ const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
     currentUser: state.currentUser,
-    friends: state.friends,
-    pending_friends: state.pending_friends,
-    pending_inverse_friends: state.pending_inverse_friends,
     message: state.message
   };
 };

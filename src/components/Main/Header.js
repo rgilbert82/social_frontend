@@ -21,8 +21,7 @@ class Header extends React.Component {
   appLogin(user) {
     return loginAPI(user)
       .then((data) => {
-        console.log(data);
-        this.props.changeCurrentUser({ loggedIn: true, currentUser: data });
+        this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
         setToken(data.user.token);
       }).catch((err) => {
         this.props.setMessage({ content: err.errors, type: 'error' });
@@ -54,10 +53,10 @@ class Header extends React.Component {
     if (this.props.loggedIn) {
       userPath = `/users/${ this.props.currentUser.slug }`;
 
-      if (this.props.pending_inverse_friends.length) {
+      if (this.props.currentUser.pending_inverse_friends.length) {
         pending = (
           <li>
-            Friend Requests: <Link to='/account/friend_requests'>{ this.props.pending_inverse_friends.length }</Link>
+            Friend Requests: <Link to='/account/friend_requests'>{ this.props.currentUser.pending_inverse_friends.length }</Link>
           </li>
         );
       }
@@ -100,9 +99,6 @@ const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
     currentUser: state.currentUser,
-    friends: state.friends,
-    pending_friends: state.pending_friends,
-    pending_inverse_friends: state.pending_inverse_friends,
     title: state.title
   };
 };

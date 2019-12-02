@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getToken } from '../../services/sessions';
-import { setMessage, updateFriends } from '../../services/redux/actions';
+import { changeCurrentUser, setMessage } from '../../services/redux/actions';
 import { updateFriendshipStatusAPI } from '../../services/api/friendships';
 
 class UserFriendAdd extends React.Component {
@@ -21,7 +21,7 @@ class UserFriendAdd extends React.Component {
 
     return updateFriendshipStatusAPI(data, token)
       .then((data) => {
-        this.props.updateFriends(data);
+        this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
       }).catch(() => {
         this.props.setMessage('There was an error updating the friendship.');
       });
@@ -42,7 +42,7 @@ class UserFriendAdd extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateFriends: (payload) => dispatch(updateFriends(payload)),
+    changeCurrentUser: (payload) => dispatch(changeCurrentUser(payload)),
     setMessage: (payload) => dispatch(setMessage(payload))
   }
 };

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { changeCurrentUser, setMessage } from '../../services/redux/actions';
 import { createUserAPI } from '../../services/api/users';
 import { setToken } from '../../services/sessions';
+import { Users } from '../Users';
 
 class HomepageLoggedOut extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class HomepageLoggedOut extends React.Component {
       <div>
         <h1>Create An Account</h1>
         <RegistrationForm submitForm={ this.userSignup } />
+        <Users />
       </div>
     );
   }
