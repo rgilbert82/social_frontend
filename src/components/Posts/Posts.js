@@ -14,6 +14,8 @@ class Posts extends React.Component {
       postsLoaded: false
     };
 
+    this.addPost    = this.addPost.bind(this);
+    this.removePost = this.removePost.bind(this);
     this.fetchPosts = this.fetchPosts.bind(this);
   }
 
@@ -37,27 +39,43 @@ class Posts extends React.Component {
       .then((data) => {
         if (this._isMounted) {
           this.setState({ posts: data.posts, postsLoaded: true });
-          console.log('POSTS');
-          console.log(data);
         }
       }).catch(() => {
         this.props.setMessage({ content: `There was an error retrieving ${ this.props.user.name }'s posts.`, type: 'error' });
       });
   }
 
+  addPost(post) {
+    const newPosts = [post].concat(this.state.posts);
+    this.setState({ posts: newPosts });
+  }
+
+  removePost(post_id) {
+    const posts = this.state.posts.filter((post) => {
+      return post.id !== post_id;
+    });
+
+    this.setState({ posts: posts });
+  }
+
   render() {
+    const currentUserPage = this.props.loggedIn && this.props.userStatus.isCurrentUser;
     let postForm;
     let content;
 
-    if (this.props.loggedIn) {
-      postForm = <AddPost resetPosts={ this.fetchPosts } />
+    if (currentUserPage) {
+      postForm = <AddPost addPost={ this.addPost } />
     }
 
     if (this.state.postsLoaded) {
       content = this.state.posts.map((post) => {
         return (
-          <li key={ post.id }>
-            <Post post={ post } resetPosts={ this.fetchPosts } />
+          <li key={ post.body }>
+            <Post
+              post={ post }
+              removePost={ this.removePost }
+              userOwnsPost={ currentUserPage }
+            />
           </li>
         );
       });

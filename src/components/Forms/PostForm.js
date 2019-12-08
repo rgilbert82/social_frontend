@@ -4,12 +4,12 @@ export default class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: ''
+      body: this.props.body || ''
     };
 
-    this.validForm       = this.validForm.bind(this);
-    this.submitForm      = this.submitForm.bind(this);
-    this.updateBody     = this.updateBody.bind(this);
+    this.validForm   = this.validForm.bind(this);
+    this.submitForm  = this.submitForm.bind(this);
+    this.updateBody  = this.updateBody.bind(this);
   }
 
   validForm() {
@@ -26,7 +26,15 @@ export default class PostForm extends React.Component {
   }
 
   render() {
-    const buttonText = this.props.comment ? 'Comment' : 'Post';
+    let buttonText;
+
+    if (this.props.body) {
+      buttonText = 'Edit';
+    } else if (this.props.comment) {
+      buttonText = 'Comment';
+    } else {
+      buttonText = 'Post';
+    }
 
     return (
       <div>

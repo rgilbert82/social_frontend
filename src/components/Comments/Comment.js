@@ -1,20 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { UpdateComment } from '.';
 
 class Comment extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      comment: this.props.comment
+    };
+
+    this.resetComment = this.resetComment.bind(this);
+  }
+
+  resetComment(comment) {
+    this.setState({ comment: comment });
+  }
+
   render() {
-    const path = `/users/${ this.props.comment.user.slug }`;
+    const userOwnsComment = this.props.loggedIn && this.props.currentUser.id === this.state.comment.user.id;
+    const path = `/users/${ this.state.comment.user.slug }`;
+    let updateComment;
+
+    if (userOwnsComment) {
+      updateComment = <UpdateComment comment={ this.state.comment } resetComment={ this.resetComment } removeComment={ this.props.removeComment }/>;
+    }
+
     return (
       <div>
         <div>
-          <p>{ this.props.comment.body }</p>
+          <p>{ this.state.comment.body }</p>
+          { updateComment }
+
           <span>
-            By: <Link to={ path }>{ this.props.comment.user.name }</Link>
+            By: <Link to={ path }>{ this.state.comment.user.name }</Link>
           </span>
         </div>
 
-        <span>Likes: { this.props.comment.likes.length }</span>
+        <span>Likes: { this.state.comment.likes.length }</span>
       </div>
     );
   }

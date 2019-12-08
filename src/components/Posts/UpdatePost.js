@@ -2,32 +2,48 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PostForm } from '../Forms';
 import { setMessage } from '../../services/redux/actions';
-import { createPostAPI } from '../../services/api/posts';
+import { editPostAPI, deletePostAPI } from '../../services/api/posts';
 
-class AddPost extends React.Component {
+class UpdatePost extends React.Component {
   constructor(props) {
     super(props);
+
+    this.deletePost = this.deletePost.bind(this);
     this.submitForm = this.submitForm.bind(this);
+  }
+
+  deletePost() {
+    return deletePostAPI(this.props.post.id)
+      .then(() => {
+        this.props.removePost(this.props.post.id);
+      }).catch((err) => {
+        this.props.setMessage({ content: err.errors, type: 'error' });
+      });
   }
 
   submitForm(post) {
     const postObj = {
       post: {
         body: post,
-        user_id: this.props.currentUser.id
+        id: this.props.post.id
       }
     };
 
-    return createPostAPI(postObj)
+    return editPostAPI(postObj)
       .then((data) => {
-        this.props.addPost(data.post);
+        this.props.resetPost(data.post);
       }).catch((err) => {
         this.props.setMessage({ content: err.errors, type: 'error' });
       });
   }
 
   render() {
-    return <PostForm submitForm={ this.submitForm } />;
+    return (
+      <div>
+        <PostForm submitForm={ this.submitForm } body={ this.props.post.body }/>
+        <button onClick={ this.deletePost }>Delete</button>
+      </div>
+    );
   }
 }
 
@@ -48,6 +64,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const component = connect(mapStateToProps, mapDispatchToProps)(AddPost);
+const component = connect(mapStateToProps, mapDispatchToProps)(UpdatePost);
 
 export default component;

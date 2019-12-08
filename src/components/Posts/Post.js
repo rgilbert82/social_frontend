@@ -1,21 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { AddComment, Comments } from '../Comments';
+import { Comments } from '../Comments';
+import { UpdatePost } from '.';
 
 class Post extends React.Component {
-  render() {
-    let addComment;
+  constructor(props) {
+    super(props);
 
-    if (this.props.loggedIn) {
-      addComment = <AddComment post={ this.props.post } currentUser={ this.props.currentUser } resetPosts={ this.props.resetPosts } />;
+    this.state = {
+      post: this.props.post
+    };
+
+    this.resetPost = this.resetPost.bind(this);
+  }
+
+  resetPost(post) {
+    this.setState({ post: post });
+  }
+
+  render() {
+    let updatePost;
+
+    if (this.props.userOwnsPost ) {
+      updatePost = <UpdatePost post={ this.state.post } removePost={ this.props.removePost } resetPost={ this.resetPost } />;
     }
 
     return (
       <div>
-        <p>{ this.props.post.body }</p>
-        <span>Likes: { this.props.post.likes.length }</span>
-        { addComment }
-        <Comments post={ this.props.post } />
+        <p>{ this.state.post.body }</p>
+        <span>Likes: { this.state.post.likes.length }</span>
+        { updatePost }
+        <Comments post={ this.state.post } />
       </div>
     );
   }
