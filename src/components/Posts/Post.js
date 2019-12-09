@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Comments } from '../Comments';
+import { Likes } from '../Likes';
 import { UpdatePost } from '.';
 
 class Post extends React.Component {
@@ -28,7 +29,7 @@ class Post extends React.Component {
     return (
       <div>
         <p>{ this.state.post.body }</p>
-        <span>Likes: { this.state.post.likes.length }</span>
+        <Likes likes={ this.state.post.likes } postId={ this.state.post.id } />
         { updatePost }
         <Comments post={ this.state.post } />
       </div>

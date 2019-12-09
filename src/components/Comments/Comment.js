@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link }  from 'react-router-dom';
+import { Likes } from '../Likes';
 import { UpdateComment } from '.';
 
 class Comment extends React.Component {
@@ -38,7 +39,7 @@ class Comment extends React.Component {
           </span>
         </div>
 
-        <span>Likes: { this.state.comment.likes.length }</span>
+        <Likes likes={ this.state.comment.likes } commentId={ this.state.comment.id } />
       </div>
     );
   }
