@@ -15,7 +15,7 @@ export default class UsersMain extends React.Component {
 
     return (
       <div>
-        <h1>Popular Users</h1>
+        <h1>users</h1>
 
         <ul>
           { content }

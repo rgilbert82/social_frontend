@@ -1,8 +1,8 @@
 import React from 'react';
 import { Header, Main } from '.';
-import { Message } from '../Misc';
+import { Notification } from '../Misc';
 import { connect } from 'react-redux';
-import { changeCurrentUser } from '../../services/redux/actions';
+import { changeCurrentUser, updateUnreadMessagesCount } from '../../services/redux/actions';
 import { getCurrentUserAPI } from '../../services/api/sessions';
 import { getToken, setToken, deleteToken } from '../../services/sessions';
 
@@ -19,7 +19,7 @@ class App extends React.Component {
 
   fetchCurrentUser() {
     if (this.props.loggedIn) { return; }
-    
+
     const token = getToken();
     let payload = { loggedIn: false, currentUser: {} };
 
@@ -28,9 +28,11 @@ class App extends React.Component {
         .then((data) => {
           payload = { loggedIn: true, currentUser: data.user };
           this.props.changeCurrentUser(payload);
+          this.props.updateUnreadMessagesCount(data.user.unread_messages_count);
           setToken(token);
         }).catch(() => {
           this.props.changeCurrentUser(payload);
+          this.props.updateUnreadMessagesCount(0);
           deleteToken();
         });
     } else {
@@ -39,17 +41,17 @@ class App extends React.Component {
   }
 
   render() {
-    let message;
+    let notification;
 
     if (!!this.props.message.content) {
-      message = <Message />
+      notification = <Notification />
     }
 
     return (
       <div>
         <Header />
         <Main />
-        { message }
+        { notification }
       </div>
     );
   }
@@ -59,7 +61,6 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    title: state.title,
     loggedIn: state.loggedIn,
     currentUser: state.currentUser,
     message: state.message
@@ -68,7 +69,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeCurrentUser: (payload) => dispatch(changeCurrentUser(payload))
+    changeCurrentUser: (payload) => dispatch(changeCurrentUser(payload)),
+    updateUnreadMessagesCount: (payload) => dispatch(updateUnreadMessagesCount(payload))
   }
 }
 

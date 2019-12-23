@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setMessage } from '../../services/redux/actions';
 
-class Message extends React.Component {
+class Notification extends React.Component {
   constructor(props) {
     super(props);
     this.closeMessageWindow = this.closeMessageWindow.bind(this);
@@ -25,7 +25,7 @@ class Message extends React.Component {
 
   render() {
     return (
-      <div className='b-message b-message-{ this.props.message.type }' onClick={ this.closeMessageWindow }>
+      <div className='b-notification b-notification-{ this.props.message.type }' onClick={ this.closeMessageWindow }>
         <p>
           { this.props.message.content }
         </p>
@@ -48,6 +48,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const component = connect(mapStateToProps, mapDispatchToProps)(Message);
+const component = connect(mapStateToProps, mapDispatchToProps)(Notification);
 
 export default component;

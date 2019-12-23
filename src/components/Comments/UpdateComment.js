@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PostForm } from '../Forms';
+import { getToken } from '../../services/sessions';
 import { setMessage } from '../../services/redux/actions';
 import { editCommentAPI, deleteCommentAPI } from '../../services/api/comments';
 
@@ -13,7 +14,9 @@ class UpdateComment extends React.Component {
   }
 
   deleteComment() {
-    return deleteCommentAPI(this.props.comment.id)
+    const token = getToken();
+
+    return deleteCommentAPI(this.props.comment.id, token)
       .then(() => {
         this.props.removeComment(this.props.comment.id);
       }).catch((err) => {
@@ -22,6 +25,7 @@ class UpdateComment extends React.Component {
   }
 
   submitForm(comment) {
+    const token = getToken();
     const commentObj = {
       comment: {
         body: comment,
@@ -29,7 +33,7 @@ class UpdateComment extends React.Component {
       }
     };
 
-    return editCommentAPI(commentObj)
+    return editCommentAPI(commentObj, token)
       .then((data) => {
         this.props.resetComment(data.comment);
       }).catch((err) => {

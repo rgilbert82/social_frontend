@@ -11,3 +11,10 @@ export const setMessage = (message) => {
     payload: message
   }
 };
+
+export const updateUnreadMessagesCount = (count) => {
+  return {
+    type: 'UPDATE_UNREAD_MESSAGES_COUNT',
+    payload: count
+  }
+};

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Posts } from '../Posts';
 import { UserFriendAdd } from '.';
+import { NewConversation } from '../Messages';
 import { connect } from 'react-redux';
 
 class UserMain extends React.Component {
@@ -76,6 +77,7 @@ class UserMain extends React.Component {
 
   render() {
     let friendButton;
+    let startConversation;
 
     if (this.state.isCurrentUser) {
       friendButton = <span>Current User</span>;
@@ -89,12 +91,17 @@ class UserMain extends React.Component {
       />
     }
 
+    if (this.props.loggedIn && !this.state.isCurrentUser) {
+      startConversation = <NewConversation user={ this.props.user } />
+    }
+
     return (
       <div>
         <div>
           <h1>{ this.props.user.name }</h1>
           <h2>{ this.props.user.email }</h2>
           { friendButton }
+          { startConversation }
         </div>
 
         <Posts userStatus={ this.state } user={ this.props.user } />

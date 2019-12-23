@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Account } from '../Account';
 import { Homepage } from '../Homepage';
+import { Messages } from '../Messages';
 import { User, Users } from '../Users';
 import { NothingHere } from '../Misc';
 
@@ -20,6 +21,12 @@ export default class Main extends React.Component {
             path='/account'
             key='account'
             render={() => <Account /> }
+          />
+
+          <Route
+            path='/messages'
+            key='messages'
+            render={() => <Messages /> }
           />
 
           <Route

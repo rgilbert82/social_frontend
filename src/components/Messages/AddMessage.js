@@ -1,36 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { PostForm } from '../Forms';
 import { getToken } from '../../services/sessions';
 import { setMessage } from '../../services/redux/actions';
-import { createCommentAPI } from '../../services/api/comments';
+import { createMessageAPI } from '../../services/api/conversations';
+import { MessageForm } from '../Forms';
 
-class AddComment extends React.Component {
+class AddMessage extends React.Component {
   constructor(props) {
     super(props);
     this.submitForm = this.submitForm.bind(this);
   }
 
-  submitForm(comment) {
+  submitForm(message) {
     const token = getToken();
-    const commentObj = {
-      comment: {
-        body: comment,
-        post_id: this.props.post.id,
-        user_id: this.props.currentUser.id
+    const messageObj = {
+      message: {
+        body: message,
+        user_id: this.props.currentUser.id,
+        recipient_id: this.props.recipientId,
+        conversation_id: this.props.conversationId
       }
     };
 
-    return createCommentAPI(commentObj, token)
+    return createMessageAPI(messageObj, token)
       .then((data) => {
-        this.props.addComment(data.comment);
+        this.props.addMessage(data.message);
       }).catch((err) => {
         this.props.setMessage({ content: err.errors, type: 'error' });
       });
   }
 
   render() {
-    return <PostForm submitForm={ this.submitForm } comment={ true }/>;
+    return <MessageForm submitForm={ this.submitForm } />;
   }
 }
 
@@ -51,6 +52,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const component = connect(mapStateToProps, mapDispatchToProps)(AddComment);
+const component = connect(mapStateToProps, mapDispatchToProps)(AddMessage);
 
 export default component;

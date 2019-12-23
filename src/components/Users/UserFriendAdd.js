@@ -23,7 +23,10 @@ class UserFriendAdd extends React.Component {
       .then((data) => {
         this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
       }).catch(() => {
-        this.props.setMessage('There was an error updating the friendship.');
+        this.props.setMessage({
+          content: 'There was an error updating the friendship.',
+          type: 'error'
+        });
       });
   }
 

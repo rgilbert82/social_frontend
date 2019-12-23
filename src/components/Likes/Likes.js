@@ -81,7 +81,10 @@ class Likes extends React.Component {
       .then((data) => {
         this.resetLike(data.like);
       }).catch(() => {
-        this.props.setMessage('Oops! Something went wrong.');
+        this.props.setMessage({
+          content: 'Oops! Something went wrong.',
+          type: 'error'
+        });
       });
   }
 

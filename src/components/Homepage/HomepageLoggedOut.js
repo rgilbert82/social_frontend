@@ -27,7 +27,7 @@ class HomepageLoggedOut extends React.Component {
   render() {
     return (
       <div>
-        <h1>Create An Account</h1>
+        <h1>create account</h1>
         <RegistrationForm submitForm={ this.userSignup } />
         <Users />
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PostForm } from '../Forms';
+import { getToken } from '../../services/sessions';
 import { setMessage } from '../../services/redux/actions';
 import { editPostAPI, deletePostAPI } from '../../services/api/posts';
 
@@ -13,7 +14,9 @@ class UpdatePost extends React.Component {
   }
 
   deletePost() {
-    return deletePostAPI(this.props.post.id)
+    const token = getToken();
+
+    return deletePostAPI(this.props.post.id, token)
       .then(() => {
         this.props.removePost(this.props.post.id);
       }).catch((err) => {
@@ -22,6 +25,7 @@ class UpdatePost extends React.Component {
   }
 
   submitForm(post) {
+    const token = getToken();
     const postObj = {
       post: {
         body: post,
@@ -29,7 +33,7 @@ class UpdatePost extends React.Component {
       }
     };
 
-    return editPostAPI(postObj)
+    return editPostAPI(postObj, token)
       .then((data) => {
         this.props.resetPost(data.post);
       }).catch((err) => {

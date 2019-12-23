@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PostForm } from '../Forms';
+import { getToken } from '../../services/sessions';
 import { setMessage } from '../../services/redux/actions';
 import { createPostAPI } from '../../services/api/posts';
 
@@ -11,6 +12,7 @@ class AddPost extends React.Component {
   }
 
   submitForm(post) {
+    const token = getToken();
     const postObj = {
       post: {
         body: post,
@@ -18,7 +20,7 @@ class AddPost extends React.Component {
       }
     };
 
-    return createPostAPI(postObj)
+    return createPostAPI(postObj, token)
       .then((data) => {
         this.props.addPost(data.post);
       }).catch((err) => {

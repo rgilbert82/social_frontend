@@ -1,9 +1,11 @@
 const initialState = {
-  title: 'Social Media Test',
+  title: 'database test',
   currentUser: {},
+  unreadMessagesCount: 0,
   loggedIn: false,
   message: { content: false, type: 'error' }
 };
+
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -14,7 +16,14 @@ const rootReducer = (state = initialState, action) => {
       };
     case 'SET_MESSAGE':
       return { ...state,
-        message: action.payload,
+        message: {
+          content: action.payload.content,
+          type: action.payload.type
+        },
+      };
+    case 'UPDATE_UNREAD_MESSAGES_COUNT':
+      return { ...state,
+        unreadMessagesCount: action.payload
       };
     default:
       return state;

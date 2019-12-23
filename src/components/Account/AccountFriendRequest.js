@@ -26,7 +26,10 @@ class AccountFriendRequest extends React.Component {
       .then((data) => {
         this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
       }).catch(() => {
-        this.props.setMessage('There was an error accepting the friendship request.');
+        this.props.setMessage({
+          content: 'There was an error accepting the friendship request.',
+          type: 'error'
+        });
       });
   }
 

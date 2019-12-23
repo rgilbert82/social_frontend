@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { LoginForm } from '../Forms';
 import { connect } from 'react-redux';
-import { changeCurrentUser, setMessage } from '../../services/redux/actions';
+import { changeCurrentUser, setMessage, updateUnreadMessagesCount } from '../../services/redux/actions';
 import { loginAPI, logoutAPI } from '../../services/api/sessions';
 import { getToken, setToken, deleteToken } from '../../services/sessions';
 
@@ -21,8 +21,9 @@ class Header extends React.Component {
   appLogin(user) {
     return loginAPI(user)
       .then((data) => {
-        this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
         setToken(data.user.token);
+        this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
+        this.props.updateUnreadMessagesCount(data.user.unread_messages_count);
       }).catch((err) => {
         this.props.setMessage({ content: err.errors, type: 'error' });
       });
@@ -40,6 +41,7 @@ class Header extends React.Component {
           deleteToken();
         }).catch(() => {
           this.props.changeCurrentUser(payload);
+          this.props.updateUnreadMessagesCount(0);
           deleteToken();
         });
     }
@@ -63,10 +65,13 @@ class Header extends React.Component {
 
       template =
         <div className='b-page-width'>
-          <Link to='/'><h1>{ this.props.title }!</h1></Link>
+          <Link to='/'><h1>{ this.props.title }</h1></Link>
           <ul>
             <li>
               <Link to={ userPath }>Profile</Link>
+            </li>
+            <li>
+              <Link to='/messages'>Messages ({ this.props.unreadMessagesCount })</Link>
             </li>
             <li>
               <Link to='/account'>Account</Link>
@@ -99,14 +104,16 @@ const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
     currentUser: state.currentUser,
-    title: state.title
+    title: state.title,
+    unreadMessagesCount: state.unreadMessagesCount
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     changeCurrentUser: (payload) => dispatch(changeCurrentUser(payload)),
-    setMessage: (payload) => dispatch(setMessage(payload))
+    setMessage: (payload) => dispatch(setMessage(payload)),
+    updateUnreadMessagesCount: (payload) => dispatch(updateUnreadMessagesCount(payload))
   }
 };
 

@@ -6,7 +6,7 @@ class HomepageLoggedIn extends React.Component {
   render() {
     return (
       <div>
-        <h1>Logged In</h1>
+        <h1>logged in</h1>
         <Users />
       </div>
     );
