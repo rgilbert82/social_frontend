@@ -1,0 +1,37 @@
+.s-user {
+  .s-user--avatar-wrapper {
+    position: relative;
+    max-width: 40rem;
+  }
+}
+
+.s-user--avatar {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border: 1px solid $green;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .s-user--avatar-cell {
+    position: relative;
+    padding-top: 12.5%;
+    width: 12.5%;
+    display: inline-block;
+
+    .s-user--avatar-cell-inner {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      &.s-user--avatar-cell-inner--editable {
+        cursor: pointer;
+      }
+    }
+  }
+}

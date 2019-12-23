@@ -1,6 +1,6 @@
 import React from 'react';
 import { Posts } from '../Posts';
-import { UserFriendAdd } from '.';
+import { UserAvatar, UserFriendAdd } from '.';
 import { NewConversation } from '../Messages';
 import { connect } from 'react-redux';
 
@@ -96,7 +96,9 @@ class UserMain extends React.Component {
     }
 
     return (
-      <div>
+      <div className='s-user'>
+        <UserAvatar user={ this.props.user } isCurrentUser={ this.state.isCurrentUser }/>
+
         <div>
           <h1>{ this.props.user.name }</h1>
           <h2>{ this.props.user.email }</h2>

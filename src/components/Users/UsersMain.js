@@ -1,20 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { CollectionUser } from '.';
 
 export default class UsersMain extends React.Component {
   render() {
     const content = this.props.users.map((user) => {
-      let path = `/users/${ user.slug }`;
-
       return (
         <li key={ user.id }>
-          <Link to={ path }>{ user.name }</Link>
+          <CollectionUser user={ user }/>
         </li>
       );
     });
 
     return (
-      <div>
+      <div className='s-users'>
         <h1>users</h1>
 
         <ul>

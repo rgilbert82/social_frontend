@@ -252,4 +252,36 @@ body {
   .b-grid--100-sm {
     width: 100% !important; } }
 
+.s-user .s-user--avatar-wrapper {
+  position: relative;
+  max-width: 40rem; }
+
+.s-user--avatar {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  border: 1px solid #49DC0F;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .s-user--avatar .s-user--avatar-cell {
+    position: relative;
+    padding-top: 12.5%;
+    width: 12.5%;
+    display: inline-block; }
+    .s-user--avatar .s-user--avatar-cell .s-user--avatar-cell-inner {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0; }
+      .s-user--avatar .s-user--avatar-cell .s-user--avatar-cell-inner.s-user--avatar-cell-inner--editable {
+        cursor: pointer; }
+
+.s-users .s-user--avatar-wrapper {
+  position: relative;
+  max-width: 30rem; }
+
 /*# sourceMappingURL=style.css.map */
