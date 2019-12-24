@@ -39,7 +39,7 @@ class NewConversation extends React.Component {
     return (
       <div>
         <h2>Send Message</h2>
-        <ConversationForm submitForm={ this.submitForm } />;
+        <ConversationForm submitForm={ this.submitForm } />
       </div>
     );
   }

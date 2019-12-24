@@ -71,6 +71,9 @@ class Header extends React.Component {
               <Link to={ userPath }>Profile</Link>
             </li>
             <li>
+              <Link to='/friends'>Friends({ this.props.currentUser.friends.length })</Link>
+            </li>
+            <li>
               <Link to='/messages'>Messages ({ this.props.unreadMessagesCount })</Link>
             </li>
             <li>

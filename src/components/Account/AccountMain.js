@@ -1,9 +1,57 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getToken } from '../../services/sessions';
+import { setMessage } from '../../services/redux/actions';
+import { editUserAPI } from '../../services/api/users';
+import { UserForm } from '../Forms';
 
-export default class AccountMain extends React.Component {
+class AccountMain extends React.Component {
+  constructor(props) {
+    super(props);
+    this.submitUpdates = this.submitUpdates.bind(this);
+  }
+
+  submitUpdates(user) {
+    const token   = getToken();
+    const userObj = {
+      user: user
+    };
+
+    return editUserAPI(userObj, token)
+      .then(() => {
+        this.props.setMessage({ content: 'Profile successfully updated', type: 'success' });
+      }).catch((err) => {
+        this.props.setMessage({ content: err.errors, type: 'error' });
+      });
+  }
+
   render() {
     return (
-      <h3>Account Main</h3>
+      <div>
+        <h3>Account Main</h3>
+        <UserForm currentUser={ this.props.currentUser } submitForm={ this.submitUpdates } />
+      </div>
     );
   }
 }
+
+
+// REDUX ======================================================================
+
+const mapStateToProps = (state) => {
+  return {
+    loggedIn: state.loggedIn,
+    currentUser: state.currentUser,
+    message: state.message
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setMessage: (payload) => dispatch(setMessage(payload))
+  }
+};
+
+const component = connect(mapStateToProps, mapDispatchToProps)(AccountMain);
+
+export default component;

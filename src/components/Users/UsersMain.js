@@ -13,8 +13,6 @@ export default class UsersMain extends React.Component {
 
     return (
       <div className='s-users'>
-        <h1>users</h1>
-
         <ul>
           { content }
         </ul>

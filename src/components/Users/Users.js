@@ -26,7 +26,12 @@ export default class Users extends React.Component {
 
   render() {
     if (this.state.users.length) {
-      return <UsersMain users={ this.state.users } />
+      return (
+        <div>
+          <h1>users</h1>
+          <UsersMain users={ this.state.users } />
+        </div>
+      );
     } else {
       return <Loading />;
     }

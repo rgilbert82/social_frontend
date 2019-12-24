@@ -37,8 +37,7 @@ class Account extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser
+    loggedIn: state.loggedIn
   };
 };
 

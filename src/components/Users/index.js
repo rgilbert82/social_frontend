@@ -1,3 +1,4 @@
+export { default as Friends } from './Friends.js';
 export { default as User } from './User.js';
 export { default as Users } from './Users.js';
 export { default as UserAvatar } from './UserAvatar.js';
