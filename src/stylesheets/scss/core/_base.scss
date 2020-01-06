@@ -1,18 +1,49 @@
 * {
+  box-sizing: border-box !important;
+  color: $green;
+
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar {
+      display: none;  /* Safari and Chrome */
+  }
+}
+
+html {
   box-sizing: border-box;
   color: $green;
   font-weight: 100;
   font-family: 'VT323', monospace;
-}
-
-html {
   font-size: 62.5%;
 }
 
 body {
+  position: relative;
   background-color: #000;
-  padding: 2rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  padding-left: $content-padding;
+  padding-right: $content-padding;
   font-size: 2rem;
+  min-height: 100vh;
+
+  @include media-query($small) {
+    padding-top: 13rem;
+    padding-left: $content-padding-small;
+    padding-right: $content-padding-small;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 4rem;
+  font-size: 1.7rem;
+  color: $gray-light;
 }
 
 //------------  GENERAL ---------------------------------------------------- //
@@ -27,10 +58,46 @@ body {
 
 
 .b-notification {
-  height: 100px;
-  width: 200px;
-  border: 1px solid #000;
-  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-15rem) translateY(-50%);
+  width: 30rem;
+  padding: 5rem $content-padding;
+  box-shadow: 0 0 5px $black;
+  background-color: $gray-dark;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 9999;
+
+  &.b-notification--success {
+    border: 2px solid $green;
+
+    p {
+      color: $green;
+    }
+  }
+
+  &.b-notification--error {
+    border: 2px solid $error-red;
+
+    p {
+      color: $error-red;
+    }
+  }
+
+  p {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+.b-notification--wrapper {
+  transition: opacity 0.5s ease;
+
+  &.b-notification--hidden {
+    opacity: 0;
+  }
 }
 
 //------------  OVERLAYS --------------------------------------------------- //
@@ -43,7 +110,7 @@ body {
   right: 0;
   background-color: $black;
   opacity: 0.3;
-  z-index: 1000;
+  z-index: 9998;
 }
 
 //------------  GRID ------------------------------------------------------- //
@@ -279,4 +346,68 @@ body {
   @include media-query($small) {
     width: 100% !important;
   }
+}
+
+
+//------------  FORMS ------------------------------------------------------ //
+
+.b-form--input {
+  border: 1px solid $gray-light;
+  padding: 0.5rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+  color: $gray-dark;
+  resize: none;
+}
+
+
+//------------  BUTTONS ---------------------------------------------------- //
+
+.b-btn {
+  border: 1px solid $gray-light;
+  background-color: $gray-medium;
+  padding: 0.5rem 1.5rem;
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none !important;
+
+  &:hover {
+    background-color: $green;
+    color: $gray-dark;
+  }
+}
+
+
+//------------  MISC ------------------------------------------------------- //
+
+.b-clearfix {
+  overflow: auto;
+
+  &:after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+.b-single-message {
+  display: block;
+  width: 100%;
+  padding: 4rem 0;
+  text-align: center;
+  overflow: hidden;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+          animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

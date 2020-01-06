@@ -27,6 +27,7 @@ export default class PostForm extends React.Component {
 
   render() {
     let buttonText;
+    let deleteButton;
 
     if (this.props.body) {
       buttonText = 'Edit';
@@ -36,10 +37,34 @@ export default class PostForm extends React.Component {
       buttonText = 'Post';
     }
 
+    if (this.props.deleteButton) {
+      deleteButton =
+        <button
+          className='b-btn'
+          onClick={ this.props.deletePost }>
+            Delete
+        </button>;
+    }
+
     return (
-      <div>
-        <textarea onChange={ this.updateBody } value={ this.state.body } ></textarea>
-        <button disabled={ !this.validForm() } onClick={ this.submitForm }>{ buttonText }</button>
+      <div className='s-post-form'>
+        <div className='b-form-group'>
+          <textarea
+            className='b-form--input'
+            onChange={ this.updateBody }
+            value={ this.state.body }
+            placeholder={ `New ${ buttonText }` }>
+          </textarea>
+        </div>
+
+        <button
+          className='b-form--btn b-btn'
+          disabled={ !this.validForm() }
+          onClick={ this.submitForm }>
+            { buttonText }
+        </button>
+
+        { deleteButton }
       </div>
     );
   }

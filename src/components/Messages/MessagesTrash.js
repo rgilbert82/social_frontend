@@ -40,26 +40,41 @@ class MessagesTrash extends React.Component {
   }
 
   render() {
-    const conversations = this.state.conversations.map((conversation) => {
+    let conversations = this.state.conversations.map((conversation) => {
       const path = `/messages/${ conversation.slug }`;
+      const hasUnread = (this.props.currentUser.id === conversation.sender_id && conversation.has_unread_sender_messages) ||
+                        (this.props.currentUser.id === conversation.recipient_id && conversation.has_unread_recipient_messages);
+      const unreadClass = hasUnread ? 's-messages--unread' : null;
+      const unreadBadge = hasUnread ? <span>[unread]</span> : null;
 
       return (
-        <li key={ conversation.id }>
-          <div>
+        <li key={ conversation.id } className={ `s-messages--conversation-list-item ${ unreadClass }` }>
+          <div className='s-messages--conversation-list-item--inner'>
             <Link to={ path }>{ conversation.title }</Link>
+            { unreadBadge }
           </div>
         </li>
       );
     });
 
-    return (
-      <div>
-        <h1>Trash</h1>
-        <Link to='/messages'>Inbox</Link>
+    if (!conversations.length) {
+      conversations = <div className='b-single-message'>No Messages</div>
+    }
 
-        <ul>
-          { conversations }
-        </ul>
+    return (
+      <div className='s-messages--trash'>
+        <div className='s-messages--header'>
+          <h1>Trash</h1>
+          <div className='s-messages--folder-link'>
+            <Link to='/messages'>Inbox</Link>
+          </div>
+        </div>
+
+        <div className='s-messages--conversations-list'>
+          <ul>
+            { conversations }
+          </ul>
+        </div>
       </div>
     );
   }

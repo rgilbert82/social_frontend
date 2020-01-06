@@ -27,9 +27,22 @@ export default class MessageForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <textarea onChange={ this.updateBody } value={ this.state.body } ></textarea>
-        <button disabled={ !this.validForm() } onClick={ this.submitForm }>Send</button>
+      <div className='s-message-form'>
+        <div className='b-form-group'>
+          <textarea
+            className='b-form--input'
+            onChange={ this.updateBody }
+            value={ this.state.body }
+            placeholder='New Message'>
+          </textarea>
+        </div>
+
+        <button
+          className='b-form--btn b-btn'
+          disabled={ !this.validForm() }
+          onClick={ this.submitForm }>
+          Send
+        </button>
       </div>
     );
   }

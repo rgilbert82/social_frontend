@@ -54,12 +54,24 @@ class AccountFriendRequest extends React.Component {
     const userPath = `/users/${ this.props.friend.slug }`;
 
     return (
-      <div>
-        <h3>
+      <div className='s-account--friend-requests-list-item--inner'>
+        <div>
           <Link to={ userPath }>{ this.props.friend.name }</Link>
-          <button onClick={ this.acceptFriendRequest }>Accept Friend Request</button>
-          <button onClick={ this.declineFriendRequest }>Decline Friend Request</button>
-        </h3>
+        </div>
+
+        <div>
+          <button
+            className='b-btn'
+            onClick={ this.acceptFriendRequest }>
+              Accept
+          </button>
+
+          <button
+            className='b-btn'
+            onClick={ this.declineFriendRequest }>
+              Decline
+          </button>
+        </div>
       </div>
     );
   }

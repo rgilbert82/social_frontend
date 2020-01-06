@@ -27,9 +27,14 @@ class AccountMain extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3>Account Main</h3>
-        <UserForm currentUser={ this.props.currentUser } submitForm={ this.submitUpdates } />
+      <div className='s-account'>
+        <div className='s-account--header'>
+          <h1>Edit Account</h1>
+        </div>
+
+        <div className='s-account--user-form'>
+          <UserForm currentUser={ this.props.currentUser } submitForm={ this.submitUpdates } />
+        </div>
       </div>
     );
   }

@@ -59,18 +59,21 @@ class Posts extends React.Component {
   }
 
   render() {
-    const currentUserPage = this.props.loggedIn && this.props.userStatus.isCurrentUser;
+    const currentUserPage = this.props.loggedIn && this.props.userStatus && this.props.userStatus.isCurrentUser;
     let postForm;
     let content;
 
     if (currentUserPage) {
-      postForm = <AddPost addPost={ this.addPost } />
+      postForm =
+        <div className='s-posts--add-post'>
+          <AddPost addPost={ this.addPost } />
+        </div>;
     }
 
     if (this.state.postsLoaded) {
       content = this.state.posts.map((post) => {
         return (
-          <li key={ post.body }>
+          <li key={ post.body } className='s-posts--post'>
             <Post
               post={ post }
               removePost={ this.removePost }
@@ -84,8 +87,8 @@ class Posts extends React.Component {
     }
 
     return (
-      <div>
-        <h2>Posts</h2>
+      <div className='s-posts'>
+        <h2 className='s-posts--title'>Posts ({ this.state.posts.length })</h2>
 
         { postForm }
 

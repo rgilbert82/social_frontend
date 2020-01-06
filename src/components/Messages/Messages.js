@@ -6,11 +6,10 @@ import { Conversation, MessagesInbox, MessagesTrash } from '.';
 class Messages extends React.Component {
   render() {
     if (!this.props.loggedIn) {
-      return <div>Please log in</div>
+      return <div className='b-single-message'>Please log in</div>
     } else {
       return (
-        <div>
-          <h1>Messages</h1>
+        <div className='s-messages'>
 
           <div>
             <Switch>

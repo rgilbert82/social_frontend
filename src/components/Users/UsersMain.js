@@ -5,7 +5,7 @@ export default class UsersMain extends React.Component {
   render() {
     const content = this.props.users.map((user) => {
       return (
-        <li key={ user.id }>
+        <li key={ user.id } className='s-users--user-list-item'>
           <CollectionUser user={ user }/>
         </li>
       );
@@ -13,7 +13,7 @@ export default class UsersMain extends React.Component {
 
     return (
       <div className='s-users'>
-        <ul>
+        <ul className='b-clearfix'>
           { content }
         </ul>
       </div>

@@ -33,20 +33,23 @@ class Comments extends React.Component {
     let addComment;
 
     if (this.props.loggedIn) {
-      addComment = <AddComment post={ this.props.post } currentUser={ this.props.currentUser } addComment={ this.addComment } />;
+      addComment =
+        <div className='s-comment--add-comment'>
+          <AddComment post={ this.props.post } currentUser={ this.props.currentUser } addComment={ this.addComment } />
+        </div>;
     }
 
     const content = this.state.comments.map((comment) => {
       return (
-        <li key={ comment.id }>
+        <li key={ comment.id } className='s-comments--comment-wrapper'>
           <Comment postId={this.props.post.id} comment={ comment } removeComment={ this.removeComment }/>
         </li>
       );
     });
 
     return (
-      <div>
-        <p>Comments</p>
+      <div className='s-comments'>
+        <h3 className='s-comments--header'>Comments ({ this.state.comments.length })</h3>
 
         { addComment }
 

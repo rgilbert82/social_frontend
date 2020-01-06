@@ -34,9 +34,31 @@ export default class ConversationForm extends React.Component {
   render() {
     return (
       <div>
-        <input type='text' onChange={ this.updateTitle } value={ this.state.title }/>
-        <textarea onChange={ this.updateBody } value={ this.state.body }></textarea>
-        <button disabled={ !this.validForm() } onClick={ this.submitForm }>Send</button>
+        <div className='b-form-group'>
+          <input
+            className='b-form--input'
+            type='text'
+            onChange={ this.updateTitle }
+            value={ this.state.title }
+            placeholder='Subject'
+          />
+        </div>
+
+        <div className='b-form-group'>
+          <textarea
+            className='b-form--input'
+            onChange={ this.updateBody }
+            value={ this.state.body }
+            placeholder='Message'>
+          </textarea>
+        </div>
+
+        <button
+          className='b-form--btn b-btn'
+          disabled={ !this.validForm() }
+          onClick={ this.submitForm }>
+            Send
+          </button>
       </div>
     );
   }

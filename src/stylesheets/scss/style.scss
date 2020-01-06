@@ -1,8 +1,15 @@
 @charset 'UTF-8';
 
-// @import 'core/_css-reset',
-        @import 'core/_variables',
+@import 'core/_css-reset',
+        'core/_variables',
         'core/_utilities',
         'core/_base',
+        'sections/account/_account',
+        'sections/forms/_login-form',
+        'sections/homepage/_homepage',
+        'sections/likes/_likes',
+        'sections/main/_header',
+        'sections/messages/_messages',
+        'sections/posts/_posts',
         'sections/user/_user',
         'sections/user/_users';

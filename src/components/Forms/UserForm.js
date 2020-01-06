@@ -65,42 +65,83 @@ export default class UserForm extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div className='b-form-group'>
           <label>Email</label>
-          <input type='text' onChange={ this.updateEmail } value={ this.state.email }/>
+          <input
+            className='b-form--input'
+            type='text'
+            onChange={ this.updateEmail }
+            value={ this.state.email }
+          />
         </div>
 
-        <div>
-        <label>First Name</label>
-          <input type='text' onChange={ this.updateFirstName } value={ this.state.first_name }/>
+        <div className='b-form-group'>
+          <label>First Name</label>
+          <input
+            className='b-form--input'
+            type='text'
+            onChange={ this.updateFirstName }
+            value={ this.state.first_name }
+          />
         </div>
 
-        <div>
+        <div className='b-form-group'>
           <label>Last Name</label>
-          <input type='text' onChange={ this.updateLastName } value={ this.state.last_name }/>
+          <input
+            className='b-form--input'
+            type='text'
+            onChange={ this.updateLastName }
+            value={ this.state.last_name }
+          />
         </div>
 
-        <div>
+        <div className='b-form-group'>
           <label>Birthday</label>
-          <input type='date' onChange={ this.updateBirthday } value={ this.state.birthday }/>
+          <input
+            className='b-form--input'
+            type='date'
+            onChange={ this.updateBirthday }
+            value={ this.state.birthday }
+          />
         </div>
 
-        <div>
+        <div className='b-form-group'>
           <label>Location</label>
-          <input type='text' onChange={ this.updateLocation } value={ this.state.location }/>
+          <input
+            className='b-form--input'
+            type='text'
+            onChange={ this.updateLocation }
+            value={ this.state.location }
+          />
         </div>
 
-        <div>
+        <div className='b-form-group'>
           <label>Tagline</label>
-          <input type='text' onChange={ this.updateTagline } value={ this.state.tagline }/>
+          <input
+            className='b-form--input'
+            type='text'
+            onChange={ this.updateTagline }
+            value={ this.state.tagline }
+          />
         </div>
 
-        <div>
+        <div className='b-form-group'>
           <label>Description</label>
-          <textarea onChange={ this.updateDescription } value={ this.state.description }></textarea>
+          <textarea
+            className='b-form--input'
+            onChange={ this.updateDescription }
+            value={ this.state.description }
+            maxLength='300'>
+          </textarea>
         </div>
 
-        <button disabled={ !this.validForm() } onClick={ this.submitForm }>Send</button>
+        <button
+          className='b-form--btn b-btn'
+          disabled={ !this.validForm() }
+          onClick={ this.submitForm }
+        >
+          Update
+          </button>
       </div>
     );
   }

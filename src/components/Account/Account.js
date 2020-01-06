@@ -6,27 +6,23 @@ import { AccountFriendRequests, AccountMain } from '.';
 class Account extends React.Component {
   render() {
     if (!this.props.loggedIn) {
-      return <div>Please log in</div>
+      return <div className='b-single-message'>Please log in</div>
     } else {
       return (
         <div>
-          <h1>Account</h1>
+          <Switch>
+            <Route
+              exact path='/account'
+              key='accountMain'
+              render={() => <AccountMain /> }
+            />
 
-          <div>
-            <Switch>
-              <Route
-                exact path='/account'
-                key='accountMain'
-                render={() => <AccountMain /> }
-              />
-
-              <Route
-                exact path='/account/friend_requests'
-                key='accountFriendRequests'
-                render={() => <AccountFriendRequests /> }
-              />
-            </Switch>
-          </div>
+            <Route
+              exact path='/account/friend_requests'
+              key='accountFriendRequests'
+              render={() => <AccountFriendRequests /> }
+            />
+          </Switch>
         </div>
       );
     }

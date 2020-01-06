@@ -1,0 +1,29 @@
+.s-like {
+  .s-like--unlike {
+    border-color: $green;
+  }
+
+  .s-like--logged-out {
+    cursor: default;
+
+    &:hover {
+      color: inherit;
+      background-color: $gray-medium;
+    }
+  }
+
+  .s-like--like {
+    display: inline-block;
+
+    + .s-like--like {
+      margin-left: 1rem;
+    }
+
+    .b-btn--like {
+      width: 3rem;
+      line-height: 2rem;
+      padding: 0;
+      margin-right: 0.5rem;
+    }
+  }
+}

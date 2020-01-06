@@ -9,29 +9,54 @@ class Post extends React.Component {
     super(props);
 
     this.state = {
+      editable: false,
       post: this.props.post
     };
 
-    this.resetPost = this.resetPost.bind(this);
+    this.toggleEditForm  = this.toggleEditForm.bind(this);
+    this.resetPost     = this.resetPost.bind(this);
+  }
+
+  toggleEditForm() {
+    this.setState({ editable: !this.state.editable });
   }
 
   resetPost(post) {
-    this.setState({ post: post });
+    this.setState({ post: post, editable: false });
   }
 
   render() {
-    let updatePost;
+    const updateButtonText = this.state.editable ? 'Cancel' : 'Edit';
+    let updateButton;
+    let postContent;
 
-    if (this.props.userOwnsPost ) {
-      updatePost = <UpdatePost post={ this.state.post } removePost={ this.props.removePost } resetPost={ this.resetPost } />;
+    if (this.props.userOwnsPost) {
+      updateButton = <button className='b-btn s-post--edit' onClick={ this.toggleEditForm }>{ updateButtonText }</button>
+    }
+
+    if (this.props.userOwnsPost && this.state.editable) {
+      postContent = <UpdatePost post={ this.state.post } removePost={ this.props.removePost } resetPost={ this.resetPost } />;
+    } else {
+      postContent =
+        <div className='s-post--content'>
+          <p className='s-post--body'>{ this.state.post.body }</p>
+          <span className='s-post--created-at'>{ new Date(this.state.post.created_at).toUTCString() }</span>
+        </div>;
     }
 
     return (
-      <div>
-        <p>{ this.state.post.body }</p>
-        <Likes likes={ this.state.post.likes } postId={ this.state.post.id } />
-        { updatePost }
-        <Comments post={ this.state.post } />
+      <div className='s-post'>
+
+        { postContent }
+
+        <div className='s-post--bottom-buttons'>
+          <Likes likes={ this.state.post.likes } postId={ this.state.post.id } />
+          { updateButton }
+        </div>
+
+        <div className='s-post--comments'>
+          <Comments post={ this.state.post } />
+        </div>
       </div>
     );
   }

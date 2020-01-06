@@ -14,21 +14,28 @@ export default class Users extends React.Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.fetchUsers();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   fetchUsers() {
     return getUsersAPI()
       .then((data) => {
-        this.setState({ users: data });
+        if (this._isMounted) {
+          this.setState({ users: data });
+        }
       }).catch();
   }
 
   render() {
     if (this.state.users.length) {
       return (
-        <div>
-          <h1>users</h1>
+        <div className='s-users--page'>
+          <h1 className='s-users--header'>Popular Users</h1>
           <UsersMain users={ this.state.users } />
         </div>
       );

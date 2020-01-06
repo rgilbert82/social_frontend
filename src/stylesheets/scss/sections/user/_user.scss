@@ -1,9 +1,136 @@
 .s-user {
   .s-user--avatar-wrapper {
     position: relative;
-    max-width: 40rem;
+    width: 100%;
+
+    .b-btn {
+      margin-top: 2rem;
+
+      + .b-btn {
+        margin-left: 1rem;
+      }
+    }
+
+    .s-user--avatar--color-picker {
+      position: absolute;
+      top: 0;
+      left: calc(100% + 2rem);
+
+      @include media-query($medium) {
+        position: relative;
+        left: 0;
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  .s-user--header {
+    width: 100%;
+    max-width: 80rem;
+    display: block;
+    margin: 0 auto 5rem auto;
+
+    @include media-query($medium) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+
+  .s-user--header-col {
+    display: inline-block;
+    width: 50%;
+    float: left;
+    vertical-align: top;
+
+    &:nth-child(2) {
+      padding-left: 3rem;
+    }
+
+    @include media-query($medium) {
+      width: 100%;
+      float: none;
+      display: block;
+
+      &:nth-child(1) {
+        order: 2;
+        width: 100%;
+        max-width: 60rem;
+      }
+
+      &:nth-child(2) {
+        padding-left: 0;
+        margin-bottom: 3rem;
+        order: 1;
+      }
+    }
+  }
+
+  .s-user--header--name {
+    margin-bottom: 1.7rem;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    .s-user--friend-add {
+      margin-top: 1.7rem;
+    }
+
+    .s-user--friendship-pending {
+      margin-top: 1.7rem;
+      display: block;
+      color: $gray-light;
+      font-size: 1.6rem;
+      font-style: italic;
+    }
+  }
+
+  .s-user--header--location,
+  .s-user--header--birthday,
+  .s-user--header--tagline,
+  .s-user--header--description {
+    color: $gray-extra-light;
+    font-size: 1.8rem;
+  }
+
+  .s-user--header--tagline,
+  .s-user--header--description {
+    margin-top: 1.7rem;
+  }
+
+  .s-user--new-conversation {
+    display: block;
+    text-align: center;
+    margin-bottom: 6rem;
+
+    .s-conversation--new--header {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .b-form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .b-form--input {
+      width: 100%;
+      max-width: 40rem;
+    }
+
+    textarea.b-form--input {
+      height: 7rem;
+    }
+
+    .b-btn {
+      width: 15rem;
+    }
   }
 }
+
+
+
 
 .s-user--avatar {
   position: relative;

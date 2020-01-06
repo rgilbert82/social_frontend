@@ -38,9 +38,6 @@ class Conversation extends React.Component {
 
     return getConversationAPI(this.props.match.params.slug, token)
       .then((data) => {
-        console.log('CONVERSATION');
-        console.log(data);
-
         if (this._isMounted) {
           this.setState({ conversation: data.conversation });
           this.props.updateUnreadMessagesCount(data.conversation.unread_messages_count);

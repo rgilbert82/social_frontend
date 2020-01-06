@@ -1,8 +1,14 @@
 // ******** COLORS *********** //
 
 $black: #000000;
+$gray-dark: #1a1a1b;
+$gray-medium-dark: #29292B;
+$gray-medium: #343536;
+$gray-light: #818384;
+$gray-extra-light: #BDBEBE;
 $white: #ffffff;
 $green: #49DC0F;
+$error-red: #b00b00;
 
 // ****************************************** //
 
@@ -13,6 +19,9 @@ $green: #49DC0F;
 
 // page max-width
 $page-width: 1300px;
+
+$content-padding: 4rem;
+$content-padding-small: 2rem;
 
 // Breakpoints used with the media mixin
 $extra-small: 'extra-small';

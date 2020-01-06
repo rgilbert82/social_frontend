@@ -65,7 +65,7 @@ class ConversationMain extends React.Component {
   render() {
     const messages = this.state.messages.map((message) => {
       return (
-        <li key={ message.id }>
+        <li key={ message.id } className='s-messages--conversation-list-item'>
           <Message message={ message } />
         </li>
       );
@@ -86,17 +86,29 @@ class ConversationMain extends React.Component {
       return <Redirect to='/messages' />
     } else {
       return (
-        <div>
-          <h1>{ this.props.conversation.title }</h1>
-          <Link to={ otherUserPath }>{ otherUser.name }</Link>
+        <div className='s-messages'>
+          <div className='s-messages--header'>
+            <h1>{ this.props.conversation.title }</h1>
+            <span>with: <Link to={ otherUserPath }>{ otherUser.name }</Link></span>
+          </div>
 
-          <button onClick={ this.moveMessage }>Move to { this.state.inTrash ? 'Inbox' : 'Trash' }</button>
+          <div className='s-messages--add-message'>
+            <AddMessage addMessage={ this.addMessage } conversationId={ this.props.conversation.id } recipientId={ otherUser.id } />
+          </div>
 
-          <AddMessage addMessage={ this.addMessage } conversationId={ this.props.conversation.id } recipientId={ otherUser.id } />
+          <div className='s-messages--conversations-list'>
+            <ul>
+              { messages }
+            </ul>
+          </div>
 
-          <ul>
-            { messages }
-          </ul>
+          <div className='s-messages--move-conversation'>
+            <button
+              className='b-form--btn b-btn'
+              onClick={ this.moveMessage }>
+              Move conversation to { this.state.inTrash ? 'Inbox' : 'Trash' }
+            </button>
+          </div>
         </div>
       );
     }

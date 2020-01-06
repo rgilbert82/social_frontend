@@ -49,9 +49,10 @@ class App extends React.Component {
 
     return (
       <div>
-        <Header />
-        <Main />
+        <Header {...this.props} />
+        <Main {...this.props} />
         { notification }
+        <footer>© Friendbook 1984</footer>
       </div>
     );
   }

@@ -89,48 +89,63 @@ class Likes extends React.Component {
   }
 
   updateLikeStatus() {
-    const data  = {
-      like: {
-        like: !this.state.userHasLiked,
-        super_like: !!this.state.userHasSuperLiked,
-        user_id: this.props.currentUser.id,
-        post_id: this.props.postId,
-        comment_id: this.props.commentId
-      }
-    };
+    if (this.props.loggedIn) {
+      const data  = {
+        like: {
+          like: !this.state.userHasLiked,
+          super_like: !!this.state.userHasSuperLiked,
+          user_id: this.props.currentUser.id,
+          post_id: this.props.postId,
+          comment_id: this.props.commentId
+        }
+      };
 
-    this.updateStatus(data);
+      this.updateStatus(data);
+    }
   }
 
   updateSuperLikeStatus() {
-    const data  = {
-        like: {
-        like: !!this.state.userHasLiked,
-        super_like: !this.state.userHasSuperLiked,
-        user_id: this.props.currentUser.id,
-        post_id: this.props.postId,
-        comment_id: this.props.commentId
-      }
-    };
+    if (this.props.loggedIn) {
+      const data  = {
+          like: {
+          like: !!this.state.userHasLiked,
+          super_like: !this.state.userHasSuperLiked,
+          user_id: this.props.currentUser.id,
+          post_id: this.props.postId,
+          comment_id: this.props.commentId
+        }
+      };
 
-    this.updateStatus(data);
+      this.updateStatus(data);
+    }
   }
 
   render() {
-    const likeButtonText      = this.state.userHasLiked ? 'Unlike' : 'Like';
-    const superLikeButtonText = this.state.userHasSuperLiked ? 'Unlove' : 'Love';
-    const likeButtons = !this.props.loggedIn ? null : (
-      <div>
-        <button onClick={ this.updateLikeStatus }>{ likeButtonText }</button>
-        <button onClick={ this.updateSuperLikeStatus }>{ superLikeButtonText }</button>
-      </div>
-    );
+    const loggedInClass        = this.props.loggedIn ? '' : 's-like--logged-out';
+    const likeButtonClass      = this.state.userHasLiked      ? 'b-btn b-btn--like s-like--unlike' : `b-btn b-btn--like ${ loggedInClass }`;
+    const superLikeButtonClass = this.state.userHasSuperLiked ? 'b-btn b-btn--like s-like--unlike' : `b-btn b-btn--like ${ loggedInClass }`;
 
     return (
-      <div>
-        <div>Likes: { this.state.likesCount }</div>
-        <div>Loves: { this.state.superLikesCount }</div>
-        { likeButtons }
+      <div className='s-like'>
+        <div className='s-like--like'>
+          <button
+            className={ likeButtonClass }
+            onClick={ this.updateLikeStatus }>
+              ✓
+          </button>
+
+          <span className='s-like--count'>{ this.state.likesCount }</span>
+        </div>
+
+        <div className='s-like--like'>
+          <button
+            className={ superLikeButtonClass }
+            onClick={ this.updateSuperLikeStatus }>
+              ♥
+          </button>
+
+          <span className='s-like--count'>{ this.state.superLikesCount }</span>
+        </div>
       </div>
     );
   }

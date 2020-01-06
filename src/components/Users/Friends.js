@@ -5,11 +5,11 @@ import { UsersMain } from '.';
 class Friends extends React.Component {
   render() {
     if (!this.props.loggedIn) {
-      return <div>Please log in</div>
+      return <div className='b-single-message'>Please log in</div>
     } else {
       return (
-        <div>
-          <h1>Friends</h1>
+        <div className='s-users--page'>
+          <h1 className='s-users--header'>Friends</h1>
           <UsersMain users={ this.props.currentUser.friends } />
         </div>
       );

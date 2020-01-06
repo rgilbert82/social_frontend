@@ -9,22 +9,29 @@ class AccountFriendRequests extends React.Component {
     if (this.props.currentUser.pending_inverse_friends.length) {
       friendRequests = this.props.currentUser.pending_inverse_friends.map((friend) => {
         return (
-          <li key={ friend.id }>
+          <li key={ friend.id } className='s-account--friend-requests-list-item'>
             <AccountFriendRequest friend={ friend } />
           </li>
         );
       });
     } else {
-      friendRequests = <li>You have no friend requests.</li>
+      friendRequests =
+        <li className='s-account--friend-requests-list-item s-account--friend-requests-none'>
+          You have no friend requests.
+        </li>
     }
 
     return (
-      <div>
-        <h2>Friend Requests: { this.props.currentUser.pending_inverse_friends.length }</h2>
+      <div className='s-account'>
+        <h1 className='s-account--header'>
+          Friend Requests ({ this.props.currentUser.pending_inverse_friends.length })
+        </h1>
 
-        <ul>
-          { friendRequests }
-        </ul>
+        <div className='s-account--friend-requests-list'>
+          <ul>
+            { friendRequests }
+          </ul>
+        </div>
       </div>
     );
   }

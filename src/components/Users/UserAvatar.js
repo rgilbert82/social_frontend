@@ -51,8 +51,8 @@ class UserAvatar extends React.Component {
 
   render() {
     const editButtonText = this.state.editable ? 'Cancel' : 'Edit Avatar';
-    const editButton   = this.props.isCurrentUser ? <button onClick={ this.toggleEditable }>{ editButtonText }</button> : null;
-    const submitButton = this.props.isCurrentUser & this.state.editable ? <button onClick={ this.submitAvatar }>Submit</button> : null;
+    const editButton   = this.props.isCurrentUser ? <button className='b-btn' onClick={ this.toggleEditable }>{ editButtonText }</button> : null;
+    const submitButton = this.props.isCurrentUser & this.state.editable ? <button className='b-btn' onClick={ this.submitAvatar }>Submit</button> : null;
 
     return (
       <div className='s-user--avatar-wrapper'>

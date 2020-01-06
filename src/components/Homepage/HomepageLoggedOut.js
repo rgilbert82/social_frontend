@@ -16,9 +16,11 @@ class HomepageLoggedOut extends React.Component {
   userSignup(user) {
     return createUserAPI(user)
       .then((data) => {
-        this.props.changeCurrentUser({ loggedIn: true, currentUser: data });
+        console.log('NEW USER');
+        console.log(data);
+        setToken(data.user.token);
+        this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
         this.props.setMessage({ content: 'Thanks for signing up!', type: 'success' });
-        setToken(data.token);
       }).catch((err) => {
         this.props.setMessage({ content: err.errors, type: 'error' });
       });
@@ -26,9 +28,12 @@ class HomepageLoggedOut extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>create account</h1>
-        <RegistrationForm submitForm={ this.userSignup } />
+      <div className='s-homepage'>
+        <div className='s-homepage--signup'>
+          <h1 className='s-homepage--signup--title'>Create Account</h1>
+          <RegistrationForm submitForm={ this.userSignup } />
+        </div>
+
         <Users />
       </div>
     );

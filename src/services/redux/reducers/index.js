@@ -1,5 +1,5 @@
 const initialState = {
-  title: 'database test',
+  title: 'Friendbook 1984',
   currentUser: {},
   unreadMessagesCount: 0,
   loggedIn: false,

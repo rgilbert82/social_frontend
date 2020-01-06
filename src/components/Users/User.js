@@ -34,8 +34,6 @@ export default class User extends React.Component {
       .then((data) => {
         if (this._isMounted) {
           this.setState({ user: data.user });
-          console.log('USER');
-          console.log(data);
         }
       }).catch(() => {
         if (this._isMounted) {

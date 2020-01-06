@@ -44,12 +44,45 @@ export default class RegistrationForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <input type="email" onChange={ this.updateEmail } value={ this.state.email } placeholder="Email" />
-        <input type="text" onChange={ this.updateFirstName } value={ this.state.first_name } placeholder="First Name" />
-        <input type="text" onChange={ this.updateLastName } value={ this.state.last_name } placeholder="Last Name" />
-        <input type="password" onChange={ this.updatePassword } value={ this.state.password } placeholder="Password" />
-        <button disabled={ !this.validForm() } onClick={ this.submitForm }>Sign Up</button>
+      <div className='s-registration-form'>
+        <div className='b-form-group'>
+          <input
+            type='text'
+            className='b-form--input'
+            onChange={ this.updateFirstName }
+            value={ this.state.first_name }
+            placeholder='First Name' />
+
+          <input
+            type='text'
+            className='b-form--input'
+            onChange={ this.updateLastName }
+            value={ this.state.last_name }
+            placeholder='Last Name' />
+        </div>
+
+        <div className='b-form-group'>
+          <input
+            type='email'
+            className='b-form--input'
+            onChange={ this.updateEmail }
+            value={ this.state.email }
+            placeholder='Email' />
+
+          <input
+            type='password'
+            className='b-form--input'
+            onChange={ this.updatePassword }
+            value={ this.state.password }
+            placeholder='Password' />
+        </div>
+
+        <button
+          className='b-form--btn b-btn'
+          disabled={ !this.validForm() }
+          onClick={ this.submitForm }>
+          Sign Up
+        </button>
       </div>
     );
   }

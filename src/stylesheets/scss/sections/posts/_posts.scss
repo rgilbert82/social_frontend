@@ -1,0 +1,176 @@
+.s-posts {
+  width: 100%;
+  max-width: 80rem;
+  display: block;
+  margin: 0 auto;
+
+  .s-posts--title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .s-posts--add-post {
+    display: block;
+    text-align: center;
+    margin-bottom: 4rem;
+
+    .b-form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .b-form--input {
+      width: 100%;
+      max-width: 40rem;
+      height: 7rem;
+    }
+
+    .b-btn {
+      width: 15rem;
+    }
+  }
+
+  .s-posts--post {
+    background-color: $gray-dark;
+    border: 1px solid $gray-medium;
+    padding: 3rem;
+
+    @include media-query($small) {
+      padding: 3rem 2rem;
+    }
+
+    + .s-posts--post {
+      margin-top: 5rem;
+    }
+  }
+}
+
+
+
+.s-post {
+  .s-post--content {
+    margin-bottom: 4rem;
+
+    .s-post--body {
+      font-size: 2.2rem;
+    }
+
+    .s-post--created-at {
+      color: $gray-light;
+      font-size: 1.6rem;
+      display: block;
+      margin-top: 1rem;
+    }
+  }
+
+  .s-post--bottom-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .s-post--update,
+  .s-comment--update {
+    margin-bottom: 4rem;
+
+    .b-form-group {
+      margin-bottom: 1rem;
+    }
+
+    .b-form--input {
+      width: 100%;
+    }
+
+    .b-btn {
+      width: 10rem;
+
+      + .b-btn {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .s-post--comments {
+    margin-top: 3rem;
+    background-color: $black;
+    border: 1px solid $gray-medium;
+  }
+
+  .s-comments {
+    .s-comments--header {
+      display: block;
+      padding: 3rem;
+      font-size: 2.5rem;
+      text-align: center;
+
+      @include media-query($small) {
+        padding: 3rem 2rem;
+      }
+    }
+
+    .s-comment--add-comment {
+      display: block;
+      text-align: center;
+      margin-bottom: 4rem;
+      padding: 0 3rem;
+
+      @include media-query($small) {
+        padding: 0 2rem;
+      }
+
+      .b-form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .b-form--input {
+        width: 100%;
+        max-width: 40rem;
+        height: 7rem;
+      }
+
+      .b-btn {
+        width: 15rem;
+      }
+    }
+
+    .s-comments--comment-wrapper {
+      padding: 3rem;
+      border-top: 1px solid $gray-medium;
+
+      @include media-query($small) {
+        padding: 3rem 2rem;
+      }
+    }
+
+    .s-comment--content {
+      margin-bottom: 4rem;
+
+      .s-comment--body {
+        font-size: 2.2rem;
+      }
+
+      .s-comment--author,
+      .s-comment--created-at {
+        color: $gray-light;
+        font-size: 1.6rem;
+        display: block;
+      }
+
+      .s-comment--author {
+        margin-top: 1rem;
+
+        a {
+          color: $gray-light;
+        }
+      }
+    }
+
+    .s-comment--bottom-buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

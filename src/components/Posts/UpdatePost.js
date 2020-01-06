@@ -43,9 +43,13 @@ class UpdatePost extends React.Component {
 
   render() {
     return (
-      <div>
-        <PostForm submitForm={ this.submitForm } body={ this.props.post.body }/>
-        <button onClick={ this.deletePost }>Delete</button>
+      <div className='s-post--update'>
+        <PostForm
+          submitForm={ this.submitForm }
+          body={ this.props.post.body }
+          deleteButton={ true }
+          deletePost={ this.deletePost }
+        />
       </div>
     );
   }

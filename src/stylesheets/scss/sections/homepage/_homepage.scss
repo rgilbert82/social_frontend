@@ -1,0 +1,63 @@
+.s-homepage {
+  .s-homepage--signup {
+    width: 100%;
+    max-width: 60rem;
+    display: block;
+    padding: 4rem;
+    margin: 0 auto 4rem auto;
+    background-color: $gray-dark;
+    border: 1px solid $gray-medium;
+
+    @include media-query($extra-small) {
+      padding: 3rem 2rem;
+    }
+  }
+
+  .s-homepage--signup--title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+
+    @include media-query($extra-small) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  .s-registration-form {
+    .b-form-group {
+      display: block;
+      width: 100%;
+
+      .b-form--input {
+        width: calc(50% - 0.5rem);
+        margin-bottom: 1rem;
+
+        &:nth-child(1) {
+          margin-right: 0.5rem;
+        }
+
+        &:nth-child(2) {
+          margin-left: 0.5rem;
+        }
+
+        @include media-query($small) {
+          width: 100%;
+
+          &:nth-child(1) {
+            margin-right: 0;
+          }
+
+          &:nth-child(2) {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    .b-btn {
+      margin: 2rem auto 0 auto;
+      display: block;
+      min-width: 15rem;
+    }
+  }
+}

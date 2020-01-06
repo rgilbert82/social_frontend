@@ -37,7 +37,7 @@ class UserFriendAdd extends React.Component {
       buttonText = 'Un-friend';
     }
 
-    return <button onClick={ this.updateFriendship }>{ buttonText }</button>;
+    return <button className='b-btn s-user--friend-add' onClick={ this.updateFriendship }>{ buttonText }</button>;
   }
 }
 

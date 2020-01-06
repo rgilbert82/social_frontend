@@ -43,9 +43,13 @@ class UpdateComment extends React.Component {
 
   render() {
     return (
-      <div>
-        <PostForm submitForm={ this.submitForm } body={ this.props.comment.body }/>
-        <button onClick={ this.deleteComment }>Delete</button>
+      <div className='s-comment--update'>
+        <PostForm
+          submitForm={ this.submitForm }
+          body={ this.props.comment.body }
+          deleteButton={ true }
+          deleteComment={ this.deleteComment }
+        />
       </div>
     );
   }

@@ -6,11 +6,13 @@ export default class Message extends React.Component {
     const userPath = `/users/${ this.props.message.sender.slug }`;
 
     return (
-      <div>
-        <p>{ this.props.message.body }</p>
+      <div className='s-message--conversation-message'>
+        <p className='s-message--conversation-message--body'>{ this.props.message.body }</p>
 
-        <div>
-          From: <Link to={ userPath }>{ this.props.message.sender.name }</Link> - <small>{ this.props.message.created_at }</small>
+        <div className='s-message--conversation-message--details'>
+          <span>From: <Link to={ userPath }>{ this.props.message.sender.name }</Link></span>
+          <span className='b-divider'> - </span>
+          <span>{ this.props.message.created_at }</span>
         </div>
       </div>
     );

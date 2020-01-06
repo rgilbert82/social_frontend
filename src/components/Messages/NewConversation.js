@@ -37,8 +37,8 @@ class NewConversation extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Send Message</h2>
+      <div className='s-conversation--new'>
+        <h2 className='s-conversation--new--header'>Contact { this.props.user.name }</h2>
         <ConversationForm submitForm={ this.submitForm } />
       </div>
     );

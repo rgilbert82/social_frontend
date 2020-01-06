@@ -1,58 +1,60 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Account } from '../Account';
 import { Homepage } from '../Homepage';
 import { Messages } from '../Messages';
 import { Friends, User, Users } from '../Users';
-import { NothingHere } from '../Misc';
+import { AnimatedSwitch, NothingHere } from '../Misc';
+
 
 export default class Main extends React.Component {
+
   render() {
     return (
-      <div className='b-page-width'>
-        <Switch>
+      <div className='s-main b-page-width'>
+        <AnimatedSwitch { ...this.props }>
           <Route
             exact path='/'
-            key='homepage'
+            key={ `${this.props.location.pathname} - ${ this.props.loggedIn }` }
             render={() => <Homepage /> }
           />
 
           <Route
             path='/account'
-            key='account'
+            key={ `${this.props.location.pathname} - ${ this.props.loggedIn }` }
             render={() => <Account /> }
           />
 
           <Route
             path='/friends'
-            key='friends'
+            key={ `${this.props.location.pathname} - ${ this.props.loggedIn }` }
             render={() => <Friends /> }
           />
 
           <Route
             path='/messages'
-            key='messages'
+            key={ `${this.props.location.pathname} - ${ this.props.loggedIn }` }
             render={() => <Messages /> }
           />
 
           <Route
             exact path='/users'
-            key='users'
+            key={ `${this.props.location.pathname} - ${ this.props.loggedIn }` }
             render={() => <Users /> }
           />
 
           <Route
             exact path='/users/:slug'
-            key='users'
+            key={ `${this.props.location.pathname} - ${ this.props.loggedIn }` }
             render={(props) => <User { ...props } /> }
           />
 
           <Route
             path='/*'
-            key='Not Found'
+            key={ `${this.props.location.pathname} - ${ this.props.loggedIn }` }
             render={ () => <NothingHere /> }
           />
-        </Switch>
+        </AnimatedSwitch>
       </div>
     );
   }

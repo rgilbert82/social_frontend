@@ -10,7 +10,9 @@ export default class CollectionUser extends React.Component {
 
     return (
       <div className='s-user--avatar-wrapper'>
-        <Link to={ path }>{ this.props.user.name }</Link>
+        <div className='s-user--collection-user--name'>
+          <Link to={ path }>{ this.props.user.name }</Link>
+        </div>
 
         <Link to={ path }>
           <UserAvatarGrid avatar={ avatar } />

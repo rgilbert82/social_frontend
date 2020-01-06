@@ -32,10 +32,12 @@ export default class UserAvatarGrid extends React.Component {
 
   makeColorPicker() {
     return this.props.editable ?
-      <SketchPicker
-        color={ this.state.color }
-        onChangeComplete={ this.colorSelect }
-      /> : null;
+      <div className='s-user--avatar--color-picker'>
+        <SketchPicker
+          color={ this.state.color }
+          onChangeComplete={ this.colorSelect }
+        />
+      </div> : null;
   }
 
   makeCells() {

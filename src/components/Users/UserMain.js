@@ -78,12 +78,12 @@ class UserMain extends React.Component {
   render() {
     let friendButton;
     let startConversation;
+    let tagline;
+    let description;
 
-    if (this.state.isCurrentUser) {
-      friendButton = <span>Current User</span>;
-    } else if (this.state.isPendingFriend) {
-      friendButton = <span>Friendship Pending</span>;
-    } else if (this.props.loggedIn){
+    if (this.state.isPendingFriend) {
+      friendButton = <span className='s-user--friendship-pending'>Friendship Pending</span>;
+    } else if (this.props.loggedIn && !this.state.isCurrentUser) {
       friendButton = <UserFriendAdd
         currentUserId={ this.props.currentUser.id }
         friendId={ this.props.user.id }
@@ -92,21 +92,54 @@ class UserMain extends React.Component {
     }
 
     if (this.props.loggedIn && !this.state.isCurrentUser) {
-      startConversation = <NewConversation user={ this.props.user } />
+      startConversation =
+        <div className='s-user--new-conversation'>
+          <NewConversation user={ this.props.user } />
+        </div>;
     }
 
     return (
       <div className='s-user'>
-        <UserAvatar user={ this.props.user } isCurrentUser={ this.state.isCurrentUser }/>
+        <div className='s-user--header b-clearfix'>
+          <div className='s-user--header-col'>
+            <UserAvatar user={ this.props.user } isCurrentUser={ this.state.isCurrentUser }/>
+          </div>
 
-        <div>
-          <h1>{ this.props.user.name }</h1>
-          <h2>{ this.props.user.email }</h2>
-          { friendButton }
-          { startConversation }
+          <div className='s-user--header-col'>
+            <div className='s-user--header--name'>
+              <h1>{ this.props.user.name }</h1>
+              { friendButton  }
+            </div>
+
+            <div>
+              { this.props.user.location ?
+                <div className='s-user--header--location'>Location: { this.props.user.location }</div>
+                : null
+              }
+
+              { this.props.user.birthday ?
+                <div className='s-user--header--birthday'>Birthday: { this.props.user.birthday.split('T')[0] }</div>
+                : null
+              }
+
+              { this.props.user.tagline ?
+                <div className='s-user--header--tagline'>{ this.props.user.tagline }</div>
+                : null
+              }
+
+              { this.props.user.description ?
+                <div className='s-user--header--description'>{ this.props.user.description }</div>
+                : null
+              }
+            </div>
+          </div>
         </div>
 
-        <Posts userStatus={ this.state } user={ this.props.user } />
+        { startConversation }
+
+        <div className='s-user--posts'>
+          <Posts userStatus={ this.state } user={ this.props.user } />
+        </div>
       </div>
     );
   }

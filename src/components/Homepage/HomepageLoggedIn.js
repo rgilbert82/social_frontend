@@ -5,8 +5,7 @@ import { Users } from '../Users';
 class HomepageLoggedIn extends React.Component {
   render() {
     return (
-      <div>
-        <h1>logged in</h1>
+      <div className='s-homepage'>
         <Users />
       </div>
     );
