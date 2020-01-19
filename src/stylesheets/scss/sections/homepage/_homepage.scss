@@ -59,5 +59,22 @@
       display: block;
       min-width: 15rem;
     }
+
+    .b-form--btn-group {
+      div {
+        margin: 1rem 0 0 0 ;
+        display: block;
+        text-align: center;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .b-btn--coinbase {
+        margin: 0;
+        display: inline-block;
+      }
+    }
   }
 }

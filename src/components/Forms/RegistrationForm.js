@@ -1,4 +1,6 @@
 import React from 'react';
+import CoinbaseCommerceButton from 'react-coinbase-commerce';
+import 'react-coinbase-commerce/dist/coinbase-commerce-button.css';
 
 export default class RegistrationForm extends React.Component {
   constructor(props) {
@@ -77,12 +79,18 @@ export default class RegistrationForm extends React.Component {
             placeholder='Password' />
         </div>
 
-        <button
-          className='b-form--btn b-btn'
-          disabled={ !this.validForm() }
-          onClick={ this.submitForm }>
-          Sign Up
-        </button>
+        <div className='b-form--btn-group'>
+          <button
+            className='b-form--btn b-btn'
+            disabled={ !this.validForm() }
+            onClick={ this.submitForm }>
+            Sign Up
+          </button>
+
+          <CoinbaseCommerceButton className='b-btn b-btn--coinbase' checkoutId={ process.env.REACT_APP_COINBASE_CHECKOUT }>
+            Donate with Crypto
+          </CoinbaseCommerceButton>
+        </div>
       </div>
     );
   }

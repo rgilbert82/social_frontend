@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header, Main } from '.';
-import { Notification } from '../Misc';
+import { Background, Notification } from '../Misc';
 import { connect } from 'react-redux';
 import { changeCurrentUser, updateUnreadMessagesCount } from '../../services/redux/actions';
 import { getCurrentUserAPI } from '../../services/api/sessions';
@@ -49,6 +49,7 @@ class App extends React.Component {
 
     return (
       <div>
+        <Background />
         <Header {...this.props} />
         <Main {...this.props} />
         { notification }

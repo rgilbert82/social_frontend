@@ -8,6 +8,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "react": "^16.10.2",
+    "react-coinbase-commerce": "^1.4.0",
     "react-color": "^2.17.3",
     "react-dom": "^16.10.2",
     "react-pose": "^4.0.10",

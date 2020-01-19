@@ -78,8 +78,6 @@ class UserMain extends React.Component {
   render() {
     let friendButton;
     let startConversation;
-    let tagline;
-    let description;
 
     if (this.state.isPendingFriend) {
       friendButton = <span className='s-user--friendship-pending'>Friendship Pending</span>;

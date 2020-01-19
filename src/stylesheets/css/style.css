@@ -145,6 +145,19 @@ footer {
   display: block;
   margin: 0 auto; }
 
+.b-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -10;
+  opacity: 0.25;
+  overflow: hidden;
+  transition: 1s opacity ease; }
+  .b-background.b-background-hidden {
+    opacity: 0; }
+
 .b-notification {
   position: fixed;
   top: 50%;
@@ -496,6 +509,15 @@ footer {
   margin: 2rem auto 0 auto;
   display: block;
   min-width: 15rem; }
+.s-homepage .s-registration-form .b-form--btn-group div {
+  margin: 1rem 0 0 0;
+  display: block;
+  text-align: center; }
+.s-homepage .s-registration-form .b-form--btn-group a {
+  text-decoration: none; }
+.s-homepage .s-registration-form .b-form--btn-group .b-btn--coinbase {
+  margin: 0;
+  display: inline-block; }
 
 .s-like .s-like--unlike {
   border-color: #49DC0F; }

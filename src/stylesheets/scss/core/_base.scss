@@ -54,6 +54,24 @@ footer {
   margin: 0 auto;
 }
 
+//------------  BACKGROUND ------------------------------------------------- //
+
+.b-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -10;
+  opacity: 0.25;
+  overflow: hidden;
+  transition: 1s opacity ease;
+
+  &.b-background-hidden {
+    opacity: 0;
+  }
+}
+
 //------------  MESSAGE WINDOW --------------------------------------------- //
 
 
