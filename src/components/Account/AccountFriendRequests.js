@@ -1,6 +1,7 @@
-import React from 'react';
+import React                    from 'react';
+import { connect }              from 'react-redux';
 import { AccountFriendRequest } from '.';
-import { connect } from 'react-redux';
+
 
 class AccountFriendRequests extends React.Component {
   render() {
@@ -37,13 +38,12 @@ class AccountFriendRequests extends React.Component {
   }
 }
 
+
 // REDUX ======================================================================
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

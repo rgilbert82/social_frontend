@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Comments } from '../Comments';
-import { Likes } from '../Likes';
+import React          from 'react';
+import { Comments }   from '../Comments';
+import { Likes }      from '../Likes';
 import { UpdatePost } from '.';
 
-class Post extends React.Component {
+
+export default class Post extends React.Component {
   constructor(props) {
     super(props);
 
@@ -61,17 +61,3 @@ class Post extends React.Component {
     );
   }
 }
-
-// REDUX ======================================================================
-
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
-  };
-};
-
-const component = connect(mapStateToProps)(Post);
-
-export default component;

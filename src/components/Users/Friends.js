@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { UsersMain } from '.';
+import { connect } from 'react-redux';
+
 
 class Friends extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class Friends extends React.Component {
     }
   }
 }
+
 
 // REDUX ======================================================================
 

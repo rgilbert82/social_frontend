@@ -1,7 +1,8 @@
-import React from 'react';
-import { Loading } from '../Misc';
-import { UsersMain } from '.';
+import React           from 'react';
+import { Loading }     from '../Misc';
+import { UsersMain }   from '.';
 import { getUsersAPI } from '../../services/api/users';
+
 
 export default class Users extends React.Component {
   constructor(props) {

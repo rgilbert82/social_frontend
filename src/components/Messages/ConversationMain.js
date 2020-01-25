@@ -1,11 +1,12 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getToken } from '../../services/sessions';
-import { setMessage } from '../../services/redux/actions';
-import { editConversationAPI } from '../../services/api/conversations';
-import { Redirect } from 'react-router-dom';
+import React                   from 'react';
+import { Link }                from 'react-router-dom';
+import { Redirect }            from 'react-router-dom';
 import { AddMessage, Message } from '.';
+import { connect }             from 'react-redux';
+import { getToken }            from '../../services/sessions';
+import { setMessage }          from '../../services/redux/actions';
+import { editConversationAPI } from '../../services/api/conversations';
+
 
 class ConversationMain extends React.Component {
   constructor(props) {
@@ -17,8 +18,8 @@ class ConversationMain extends React.Component {
       redirect: false
     };
 
-    this.addMessage = this.addMessage.bind(this);
-    this.moveMessage = this.moveMessage.bind(this);
+    this.addMessage           = this.addMessage.bind(this);
+    this.moveMessage          = this.moveMessage.bind(this);
     this.determineInboxStatus = this.determineInboxStatus.bind(this);
   }
 
@@ -115,11 +116,11 @@ class ConversationMain extends React.Component {
   }
 }
 
+
 // REDUX ======================================================================
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
     currentUser: state.currentUser
   };
 };

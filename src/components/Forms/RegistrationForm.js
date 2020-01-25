@@ -2,6 +2,7 @@ import React from 'react';
 import CoinbaseCommerceButton from 'react-coinbase-commerce';
 import 'react-coinbase-commerce/dist/coinbase-commerce-button.css';
 
+
 export default class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);

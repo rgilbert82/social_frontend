@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { setMessage } from '../../services/redux/actions';
-import { getToken } from '../../services/sessions';
+import React           from 'react';
+import { Link }        from 'react-router-dom';
+import { connect }     from 'react-redux';
+import { getToken }    from '../../services/sessions';
+import { setMessage }  from '../../services/redux/actions';
 import { getTrashAPI } from '../../services/api/conversations';
+
 
 class MessagesTrash extends React.Component {
   constructor(props) {
@@ -80,11 +81,11 @@ class MessagesTrash extends React.Component {
   }
 }
 
+
 // REDUX ======================================================================
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
     currentUser: state.currentUser
   };
 };

@@ -1,14 +1,13 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import { Account } from '../Account';
+import React        from 'react';
+import { Route }    from 'react-router-dom';
+import { Account }  from '../Account';
 import { Homepage } from '../Homepage';
 import { Messages } from '../Messages';
-import { Friends, User, Users } from '../Users';
+import { Friends, User, Users }        from '../Users';
 import { AnimatedSwitch, NothingHere } from '../Misc';
 
 
 export default class Main extends React.Component {
-
   render() {
     return (
       <div className='s-main b-page-width'>

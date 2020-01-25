@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { setMessage } from '../../services/redux/actions';
-import { getToken } from '../../services/sessions';
+import React           from 'react';
+import { Link }        from 'react-router-dom';
+import { connect }     from 'react-redux';
+import { getToken }    from '../../services/sessions';
+import { setMessage }  from '../../services/redux/actions';
 import { getInboxAPI } from '../../services/api/conversations';
+
 
 class MessagesInbox extends React.Component {
   constructor(props) {
@@ -32,8 +33,6 @@ class MessagesInbox extends React.Component {
     return getInboxAPI(this.props.currentUser.id, token)
       .then((data) => {
         if (this._isMounted) {
-          console.log('INBOX');
-          console.log(data);
           this.setState({ conversations: data.conversations, conversationsLoaded: true });
         }
       }).catch(() => {
@@ -82,11 +81,11 @@ class MessagesInbox extends React.Component {
   }
 }
 
+
 // REDUX ======================================================================
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
     currentUser: state.currentUser
   };
 };

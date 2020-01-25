@@ -1,7 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { getToken } from '../../services/sessions';
-import { setMessage } from '../../services/redux/actions';
+import React                   from 'react';
+import { connect }             from 'react-redux';
+import { getToken }            from '../../services/sessions';
+import { setMessage }          from '../../services/redux/actions';
 import { updateLikeStatusAPI } from '../../services/api/likes';
 
 
@@ -13,11 +13,11 @@ class Likes extends React.Component {
       likes: this.props.likes,
     };
 
-    this.resetLike = this.resetLike.bind(this);
-    this.updateStatus = this.updateStatus.bind(this);
-    this.updateLikeStatus = this.updateLikeStatus.bind(this);
+    this.resetLike             = this.resetLike.bind(this);
+    this.setUserStatus         = this.setUserStatus.bind(this);
+    this.updateStatus          = this.updateStatus.bind(this);
+    this.updateLikeStatus      = this.updateLikeStatus.bind(this);
     this.updateSuperLikeStatus = this.updateSuperLikeStatus.bind(this);
-    this.setUserStatus = this.setUserStatus.bind(this);
   }
 
   componentDidMount() {
@@ -52,7 +52,6 @@ class Likes extends React.Component {
   }
 
   resetLike(newLike) {
-    console.log(newLike);
     let likeAdded = false;
     let newLikes = this.state.likes.map((like) => {
       if (like.user.id === newLike.user.id) {
@@ -69,9 +68,6 @@ class Likes extends React.Component {
 
     this.setState({ likes: newLikes });
     this.setUserStatus();
-
-    console.log(newLikes);
-    console.log(this.state.likes);
   }
 
   updateStatus(data) {
@@ -151,13 +147,13 @@ class Likes extends React.Component {
   }
 }
 
+
 // REDUX ======================================================================
 
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React         from 'react';
+import { Link }      from 'react-router-dom';
 import { LoginForm } from '../Forms';
-import { connect } from 'react-redux';
-import { changeCurrentUser, setMessage, updateUnreadMessagesCount } from '../../services/redux/actions';
-import { loginAPI, logoutAPI } from '../../services/api/sessions';
+import { connect }   from 'react-redux';
+import { loginAPI, logoutAPI }             from '../../services/api/sessions';
 import { getToken, setToken, deleteToken } from '../../services/sessions';
+import { changeCurrentUser, setMessage, updateUnreadMessagesCount } from '../../services/redux/actions';
 
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.appLogin    = this.appLogin.bind(this);
-    this.appLogout   = this.appLogout.bind(this);
-    this.blinkCursor = this.blinkCursor.bind(this);
-    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.appLogin             = this.appLogin.bind(this);
+    this.appLogout            = this.appLogout.bind(this);
+    this.blinkCursor          = this.blinkCursor.bind(this);
+    this.toggleDropdown       = this.toggleDropdown.bind(this);
     this.redirectHomeOnLogout = this.redirectHomeOnLogout.bind(this);
   }
 
@@ -166,6 +166,7 @@ class Header extends React.Component {
     );
   }
 }
+
 
 // REDUX ======================================================================
 

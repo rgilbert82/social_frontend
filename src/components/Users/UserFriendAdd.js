@@ -1,8 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React        from 'react';
+import { connect }  from 'react-redux';
 import { getToken } from '../../services/sessions';
+import { updateFriendshipStatusAPI }     from '../../services/api/friendships';
 import { changeCurrentUser, setMessage } from '../../services/redux/actions';
-import { updateFriendshipStatusAPI } from '../../services/api/friendships';
+
 
 class UserFriendAdd extends React.Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class UserFriendAdd extends React.Component {
     return <button className='b-btn s-user--friend-add' onClick={ this.updateFriendship }>{ buttonText }</button>;
   }
 }
+
 
 // REDUX ======================================================================
 

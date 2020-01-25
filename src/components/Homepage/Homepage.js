@@ -1,6 +1,7 @@
-import React from 'react';
-import { HomepageLoggedIn, HomepageLoggedOut } from '.';
+import React       from 'react';
 import { connect } from 'react-redux';
+import { HomepageLoggedIn, HomepageLoggedOut } from '.';
+
 
 class Homepage extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class Homepage extends React.Component {
     }
   }
 }
+
 
 // REDUX ======================================================================
 

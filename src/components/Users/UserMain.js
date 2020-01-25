@@ -1,8 +1,9 @@
-import React from 'react';
-import { Posts } from '../Posts';
+import React                         from 'react';
+import { Posts }                     from '../Posts';
+import { NewConversation }           from '../Messages';
 import { UserAvatar, UserFriendAdd } from '.';
-import { NewConversation } from '../Messages';
-import { connect } from 'react-redux';
+import { connect }                   from 'react-redux';
+
 
 class UserMain extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class UserMain extends React.Component {
       isPendingFriend: false
     };
 
-    this.resetState = this.resetState.bind(this);
-    this.checkIfFriend = this.checkIfFriend.bind(this);
+    this.resetState         = this.resetState.bind(this);
+    this.checkIfFriend      = this.checkIfFriend.bind(this);
     this.checkIfCurrentUser = this.checkIfCurrentUser.bind(this);
   }
 
@@ -148,8 +149,7 @@ class UserMain extends React.Component {
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

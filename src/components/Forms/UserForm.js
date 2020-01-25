@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class UserForm extends React.Component {
   constructor(props) {
     super(props);
@@ -15,14 +16,14 @@ export default class UserForm extends React.Component {
       description: this.props.currentUser.description || ''
     };
 
-    this.validForm   = this.validForm.bind(this);
-    this.submitForm  = this.submitForm.bind(this);
-    this.updateEmail = this.updateEmail.bind(this);
-    this.updateFirstName = this.updateFirstName.bind(this);
-    this.updateLastName = this.updateLastName.bind(this);
-    this.updateBirthday = this.updateBirthday.bind(this);
-    this.updateLocation = this.updateLocation.bind(this);
-    this.updateTagline = this.updateTagline.bind(this);
+    this.validForm         = this.validForm.bind(this);
+    this.submitForm        = this.submitForm.bind(this);
+    this.updateEmail       = this.updateEmail.bind(this);
+    this.updateFirstName   = this.updateFirstName.bind(this);
+    this.updateLastName    = this.updateLastName.bind(this);
+    this.updateBirthday    = this.updateBirthday.bind(this);
+    this.updateLocation    = this.updateLocation.bind(this);
+    this.updateTagline     = this.updateTagline.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
   }
 

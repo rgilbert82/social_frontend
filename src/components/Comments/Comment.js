@@ -1,8 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link }  from 'react-router-dom';
-import { Likes } from '../Likes';
+import React             from 'react';
+import { Link }          from 'react-router-dom';
+import { Likes }         from '../Likes';
 import { UpdateComment } from '.';
+import { connect }       from 'react-redux';
+
 
 class Comment extends React.Component {
   constructor(props) {
@@ -65,13 +66,13 @@ class Comment extends React.Component {
   }
 }
 
+
 // REDUX ======================================================================
 
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

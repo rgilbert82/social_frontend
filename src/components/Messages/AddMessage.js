@@ -1,9 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { getToken } from '../../services/sessions';
-import { setMessage } from '../../services/redux/actions';
+import React                from 'react';
+import { connect }          from 'react-redux';
+import { getToken }         from '../../services/sessions';
+import { setMessage }       from '../../services/redux/actions';
 import { createMessageAPI } from '../../services/api/conversations';
-import { MessageForm } from '../Forms';
+import { MessageForm }      from '../Forms';
+
 
 class AddMessage extends React.Component {
   constructor(props) {
@@ -40,9 +41,7 @@ class AddMessage extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

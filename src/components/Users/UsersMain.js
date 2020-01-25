@@ -1,5 +1,6 @@
-import React from 'react';
+import React              from 'react';
 import { CollectionUser } from '.';
+
 
 export default class UsersMain extends React.Component {
   render() {

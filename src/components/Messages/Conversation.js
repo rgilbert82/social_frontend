@@ -1,10 +1,11 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { getToken } from '../../services/sessions';
-import { getConversationAPI } from '../../services/api/conversations';
+import React                         from 'react';
+import { ConversationMain }          from '.';
+import { Loading, NothingHere }      from '../Misc';
+import { connect }                   from 'react-redux';
+import { getToken }                  from '../../services/sessions';
+import { getConversationAPI }        from '../../services/api/conversations';
 import { updateUnreadMessagesCount } from '../../services/redux/actions';
-import { ConversationMain } from '.';
-import { Loading, NothingHere } from '../Misc';
+
 
 class Conversation extends React.Component {
   constructor(props) {
@@ -60,14 +61,8 @@ class Conversation extends React.Component {
   }
 }
 
-// REDUX ======================================================================
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser
-  };
-};
+// REDUX ======================================================================
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -75,6 +70,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-const component = connect(mapStateToProps, mapDispatchToProps)(Conversation);
+const component = connect(null, mapDispatchToProps)(Conversation);
 
 export default component;

@@ -1,7 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React             from 'react';
+import { connect }       from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { Conversation, MessagesInbox, MessagesTrash } from '.';
+
 
 class Messages extends React.Component {
   render() {
@@ -43,8 +44,7 @@ class Messages extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser
+    loggedIn: state.loggedIn
   };
 };
 

@@ -1,10 +1,11 @@
-import React from 'react';
+import React      from 'react';
 import { connect } from 'react-redux';
 import { getToken } from '../../services/sessions';
 import { setMessage } from '../../services/redux/actions';
 import { editUserAPI } from '../../services/api/users';
 import { defaultAvatar } from '../../services/misc';
 import { UserAvatarGrid } from '.';
+
 
 class UserAvatar extends React.Component {
   constructor(props) {
@@ -68,9 +69,7 @@ class UserAvatar extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

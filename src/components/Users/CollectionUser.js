@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React              from 'react';
+import { Link }           from 'react-router-dom';
 import { UserAvatarGrid } from '.';
-import { defaultAvatar } from '../../services/misc';
+import { defaultAvatar }  from '../../services/misc';
+
 
 export default class CollectionUser extends React.Component {
   render() {

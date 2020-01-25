@@ -1,9 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { setMessage } from '../../services/redux/actions';
-import { getPostsAPI } from '../../services/api/posts';
+import React             from 'react';
+import { Loading }       from '../Misc';
 import { AddPost, Post } from '.';
-import { Loading } from '../Misc';
+import { connect }       from 'react-redux';
+import { setMessage }    from '../../services/redux/actions';
+import { getPostsAPI }   from '../../services/api/posts';
+
 
 class Posts extends React.Component {
   constructor(props) {
@@ -105,8 +106,7 @@ class Posts extends React.Component {
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

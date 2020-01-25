@@ -1,10 +1,11 @@
-import React from 'react';
-import { Header, Main } from '.';
+import React                        from 'react';
+import { Header, Main }             from '.';
 import { Background, Notification } from '../Misc';
-import { connect } from 'react-redux';
+import { connect }                                      from 'react-redux';
+import { getCurrentUserAPI }                            from '../../services/api/sessions';
+import { getToken, setToken, deleteToken }              from '../../services/sessions';
 import { changeCurrentUser, updateUnreadMessagesCount } from '../../services/redux/actions';
-import { getCurrentUserAPI } from '../../services/api/sessions';
-import { getToken, setToken, deleteToken } from '../../services/sessions';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class App extends React.Component {
     );
   }
 }
+
 
 // REDUX ======================================================================
 

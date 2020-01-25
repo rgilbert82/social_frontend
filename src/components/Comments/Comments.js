@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React                   from 'react';
+import { connect }             from 'react-redux';
 import { AddComment, Comment } from '.';
 
 
@@ -61,13 +61,13 @@ class Comments extends React.Component {
   }
 }
 
+
 // REDUX ======================================================================
 
 const mapStateToProps = (state) => {
   return {
     loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

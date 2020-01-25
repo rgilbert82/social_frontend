@@ -1,9 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React        from 'react';
+import { Link }     from 'react-router-dom';
+import { connect }  from 'react-redux';
 import { getToken } from '../../services/sessions';
 import { changeCurrentUser, setMessage } from '../../services/redux/actions';
 import { confirmFriendshipAPI, deleteFriendshipAPI } from '../../services/api/friendships';
+
 
 class AccountFriendRequest extends React.Component {
   constructor(props) {
@@ -76,6 +77,7 @@ class AccountFriendRequest extends React.Component {
     );
   }
 }
+
 
 // REDUX ======================================================================
 

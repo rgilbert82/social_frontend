@@ -1,10 +1,11 @@
-import React from 'react';
+import React                from 'react';
+import { Users }            from '../Users';
 import { RegistrationForm } from '../Forms';
-import { connect } from 'react-redux';
+import { connect }          from 'react-redux';
+import { setToken }         from '../../services/sessions';
+import { createUserAPI }    from '../../services/api/users';
 import { changeCurrentUser, setMessage } from '../../services/redux/actions';
-import { createUserAPI } from '../../services/api/users';
-import { setToken } from '../../services/sessions';
-import { Users } from '../Users';
+
 
 class HomepageLoggedOut extends React.Component {
   constructor(props) {
@@ -16,8 +17,6 @@ class HomepageLoggedOut extends React.Component {
   userSignup(user) {
     return createUserAPI(user)
       .then((data) => {
-        console.log('NEW USER');
-        console.log(data);
         setToken(data.user.token);
         this.props.changeCurrentUser({ loggedIn: true, currentUser: data.user });
         this.props.setMessage({ content: 'Thanks for signing up!', type: 'success' });
@@ -39,6 +38,7 @@ class HomepageLoggedOut extends React.Component {
     );
   }
 }
+
 
 // REDUX ======================================================================
 

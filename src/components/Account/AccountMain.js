@@ -1,9 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { getToken } from '../../services/sessions';
-import { setMessage } from '../../services/redux/actions';
+import React           from 'react';
+import { connect }     from 'react-redux';
+import { getToken }    from '../../services/sessions';
+import { setMessage }  from '../../services/redux/actions';
 import { editUserAPI } from '../../services/api/users';
-import { UserForm } from '../Forms';
+import { UserForm }    from '../Forms';
+
 
 class AccountMain extends React.Component {
   constructor(props) {
@@ -45,9 +46,7 @@ class AccountMain extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
+    currentUser: state.currentUser
   };
 };
 

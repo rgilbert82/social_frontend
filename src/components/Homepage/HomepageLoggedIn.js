@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React     from 'react';
 import { Users } from '../Users';
 
-class HomepageLoggedIn extends React.Component {
+
+export default class HomepageLoggedIn extends React.Component {
   render() {
     return (
       <div className='s-homepage'>
@@ -11,15 +11,3 @@ class HomepageLoggedIn extends React.Component {
     );
   }
 }
-
-// REDUX ======================================================================
-
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.currentUser
-  };
-};
-
-const component = connect(mapStateToProps)(HomepageLoggedIn);
-
-export default component;

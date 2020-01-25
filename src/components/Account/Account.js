@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { AccountFriendRequests, AccountMain } from '.';
 
+
 class Account extends React.Component {
   render() {
     if (!this.props.loggedIn) {
@@ -28,6 +29,7 @@ class Account extends React.Component {
     }
   }
 }
+
 
 // REDUX ======================================================================
 

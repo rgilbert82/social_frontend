@@ -1,9 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { PostForm } from '../Forms';
-import { getToken } from '../../services/sessions';
+import React          from 'react';
+import { PostForm }   from '../Forms';
+import { connect }    from 'react-redux';
+import { getToken }   from '../../services/sessions';
 import { setMessage } from '../../services/redux/actions';
 import { editPostAPI, deletePostAPI } from '../../services/api/posts';
+
 
 class UpdatePost extends React.Component {
   constructor(props) {
@@ -58,20 +59,12 @@ class UpdatePost extends React.Component {
 
 // REDUX ======================================================================
 
-const mapStateToProps = (state) => {
-  return {
-    loggedIn: state.loggedIn,
-    currentUser: state.currentUser,
-    message: state.message
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
     setMessage: (payload) => dispatch(setMessage(payload))
   }
 };
 
-const component = connect(mapStateToProps, mapDispatchToProps)(UpdatePost);
+const component = connect(null, mapDispatchToProps)(UpdatePost);
 
 export default component;

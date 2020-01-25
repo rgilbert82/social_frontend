@@ -1,5 +1,6 @@
-import React from 'react';
+import React            from 'react';
 import { SketchPicker } from 'react-color';
+
 
 export default class UserAvatarGrid extends React.Component {
   constructor(props) {
