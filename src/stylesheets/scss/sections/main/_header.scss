@@ -62,6 +62,10 @@
     transition: all 0.7s ease;
     box-shadow: 0 0 5px $black;
 
+    @media (min-width: 1600px) {
+      right: calc(50% - 40px - 1500px / 2);
+    }
+
     @include media-query($small) {
       left: 0;
       right: auto;
